@@ -1,4 +1,9 @@
+<?php 
 
+  include("includes/handlers/register-handler.php");
+  include("includes/handlers/login-handler.php");
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -56,8 +61,10 @@
 
       <div class="starter-template">
         <div id="inputContainer">
-       	<h2>Login To your account</h2>
-		<form id="loginForm" action="register.php" method="POST">	
+       
+
+		<form id="loginForm" action="register.php" method="POST">
+			<h2>Got an account?</h2>	
 			<div class="form-group">
 				<label for="loginUsername">User</label>
 				<input type="email" class="form-control" id="loginUsername" name="loginUsername" type="text" placeholder="email" required>
@@ -65,10 +72,58 @@
 			</div>
 			<div class="form-group">
 				<label for="loginPassword">Password</label>
-				<input type="password" class="form-control" id="loginPassword" name="loginPassword"  required>
+				<input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password"  required>
 			</div>
 			<button type="submit" name="loginButton" class="btn btn-primary">LOG IN</button>
 		</form>
+
+		<hr>
+
+		<form id="registerForm" action="register.php" method="POST">
+			<h2>Want a free account?</h2>	
+			<div class="form-group">
+				<label for="nickname">Nick Name</label>
+				<input type="text" class="form-control" id="nickname" name="nickname" placeholder="Nickname" required>
+			</div>
+
+			<div class="form-group">
+				<label for="firstName">First Name</label>
+				<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+			</div>
+
+			<div class="form-group">
+				<label for="lastName">Last Name</label>
+				<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+			</div>
+
+			<div class="form-group">
+				<label for="email">Your Email</label>
+				<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+				<small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
+			</div>
+			
+			<div class="form-group">
+				<label for="email2">Confirm Email</label>
+				<input type="email" class="form-control" id="email2" name="email2" placeholder="Email" required>
+				<small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password"  required>
+			</div>
+
+			<div class="form-group">
+				<label for="password2">Confirm Password</label>
+				<input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password"  required>
+			</div>
+
+			<button type="submit" name="registerButton" class="btn btn-primary">SIGN UP</button>
+
+		</form>
+
+
+
 	  </div>
       </div>
 
