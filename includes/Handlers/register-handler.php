@@ -1,10 +1,8 @@
 <?php 
-
-function sanitizeFormPassword($inputText){
-  $inputText = strip_tags($inputText); // Remove all HTML Tags
-  return $inputText;
-}
-
+/*
+ *  Sanitize functions
+ *
+ */
 function sanitizeFormNickname($inputText){
   $inputText = strip_tags($inputText); // Remove all HTML Tags
   $inputText = str_replace(" ", "", $inputText); // Look for spaces and replace an empty string
@@ -18,6 +16,11 @@ function sanitizeFormString($inputText){
   return $inputText;
 }
 
+function sanitizeFormPassword($inputText){
+  $inputText = strip_tags($inputText); // Remove all HTML Tags
+  return $inputText;
+}
+
 
 //  If the button is pressed, submitted the form to the server
 if (isset($_POST['loginButton'])) {
@@ -26,6 +29,8 @@ if (isset($_POST['loginButton'])) {
 
 if (isset($_POST['registerButton'])) {
   // register pressed
+
+  //  Sanitize
   $nickname = sanitizeFormNickname($_POST['nickname']);
   $firstName = sanitizeFormString($_POST['firstName']);
   $lastName = sanitizeFormString($_POST['lastName']);
