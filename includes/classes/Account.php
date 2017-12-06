@@ -1,9 +1,11 @@
 <?php 
 	class Account{
 
+		private $pdo;
 		private $error;
 
-		public function __construct() {
+		public function __construct($pdo) {
+			$this->pdo = $pdo;
 			$this->error = array();
 		}
 
@@ -17,7 +19,7 @@
 
 		    if(empty($this->error)) {
 		    	//  Insert in to the database
-		    	return true;
+		    	return $this->insertUserDetails($nn, $fn, $ln, $em, $em2, $pw, $pw2);
 		    } else {
 		    	return false;
 		    }	
@@ -31,6 +33,15 @@
 				$errorMessage = "";
 			}
 			return "<span class='errorMessage'>$errorMessage</span>";
+		}
+
+		private function insertUserDetails($nn, $fn, $ln, $em, $em2, $pw, $pw2) {
+			$encryptedPw = md5($pw);
+			$profilePic = "assets/images/profile-pics/user.png";
+			$date = date("Y-m-d");
+
+			$result = $this->pdo->prepare("INSERT INTO users VALUES ('', '$nn', '$fn', '$ln', '$em', '$encryptedPw', '$date', '$profilePic')");
+			return $result->execute();
 		}
 
 

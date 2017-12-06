@@ -1,8 +1,9 @@
 <?php 
+  include("includes/config.php");
   include("includes/classes/Account.php");
   include("includes/classes/Constants.php");
 
-  $account = new Account(); // Created in to use the $account variable in register-handler.php amd register.php
+  $account = new Account($pdo); // Created in to use the $account variable in register-handler.php amd register.php
 
   function getInputValue($name){
     if (isset($_POST[$name])) {
@@ -70,7 +71,7 @@
 
       <div class="starter-template">
         <div id="inputContainer">
-          <!--
+         
       		<form id="loginForm" action="register.php" method="POST">
       			<h2>Got an account?</h2>	
       			<div class="form-group">
@@ -84,7 +85,7 @@
       			</div>
       			<button type="submit" name="loginButton" class="btn btn-primary">LOG IN</button>
       		</form>
-          -->
+         
     		<hr>
           
       		<form id="registerForm" action="register.php" method="POST">
