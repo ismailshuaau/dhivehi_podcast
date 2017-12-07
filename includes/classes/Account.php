@@ -9,6 +9,22 @@
 			$this->error = array();
 		}
 
+		public function login($un, $pw) {
+
+			$pw = md5($pw);
+			$query = "SELECT * from users WHERE email='$un' AND password='$pw'";
+			$checkLoginQuery = $this->pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+			$checkLoginQuery->execute();
+			$rowCount = $checkLoginQuery->rowCount();
+
+			if($rowCount == 1) {
+				return true;
+			} else {
+				array_push($this->error, Constants::$loginFailed);
+				return false;
+			}
+		}
+
 		public function register($nn, $fn, $ln, $em, $em2, $pw, $pw2) {
 			// Validate
 			$this->validateNickname($nn);

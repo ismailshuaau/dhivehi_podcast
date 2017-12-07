@@ -75,6 +75,7 @@
       		<form id="loginForm" action="register.php" method="POST">
       			<h2>Got an account?</h2>	
       			<div class="form-group">
+              <?php echo $account->getError(Constants::$loginFailed); ?>
       				<label for="loginUsername">User</label>
       				<input type="email" class="form-control" id="loginUsername" name="loginUsername" type="text" placeholder="email" required>
       				<small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
