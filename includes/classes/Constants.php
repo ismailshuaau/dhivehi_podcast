@@ -15,6 +15,7 @@ class Constants {
 
 	// Login error messages
 	public static $loginFailed = "Your username or password was incorrect";
+	// public static $emailTaken = "This email is already in use";
 
 }
 
