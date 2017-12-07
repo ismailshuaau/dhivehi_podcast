@@ -92,6 +92,7 @@
       			<h2>Want a free account?</h2>
       			<div class="form-group">
               <?php echo $account->getError(Constants::$nickNameCharacters); ?>
+              <?php echo $account->getError(Constants::$userNameTaken); ?>
       				<label for="nickname">Nick Name</label>
       				<input type="text" class="form-control" id="nickname" name="nickname" placeholder="Nickname" value="<?php getInputValue('nickname') ?>" required>
       			</div>
@@ -121,6 +122,7 @@
               <?php echo $account->getError(Constants::$passwordsDoNotMatch); ?>
               <?php echo $account->getError(Constants::$passwordNotAlphanumeric); ?>
               <?php echo $account->getError(Constants::$passwordCharacters); ?>
+              <?php echo $account->getError(Constants::$emailTaken); ?>
       				<label for="password">Password</label>
       				<input type="password" class="form-control" id="password" name="password" placeholder="Password"  required>
       			</div>

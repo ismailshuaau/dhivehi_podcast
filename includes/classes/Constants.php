@@ -10,6 +10,8 @@ class Constants {
 	public static $passwordsDoNotMatch = "Your password do not match";
 	public static $passwordNotAlphanumeric = "Your password can only contain numbers and letters";
 	public static $passwordCharacters = "Your password may contain 5 to 30 characters";
+	public static $userNameTaken = "This nickname already exists";
+	public static $emailTaken = "This email is in use";
 
 }
 

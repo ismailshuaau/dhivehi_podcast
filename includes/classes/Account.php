@@ -49,15 +49,25 @@
 		 *  Validation functions
 		 *
 		 */
-		private function validateNickname($nn){
+		private function validateNickname($nn) {
 			if(strlen($nn) > 25 || strlen($nn) < 5) {
 				array_push($this->error, Constants::$nickNameCharacters);
 				return;
 			}
-			//  Todo: Check if nickname exists
+
+			$query = "SELECT nickname From users WHERE nickname='$nn'";
+			$checkUsernameQuery = $this->pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+			$checkUsernameQuery->execute();
+			$rowCount = $checkUsernameQuery->rowCount();
+
+			if ($rowCount != 0) {
+				array_push($this->error, Constants::$userNameTaken);
+				return;
+			}
+		
 		}	
 
-		private function validateFirstName($fn){
+		private function validateFirstName($fn) {
 			if(strlen($fn) > 25 || strlen($fn) < 2) {
 				array_push($this->error, Constants::$firstNameCharacters);
 				return;
@@ -65,7 +75,7 @@
 
 		}
 
-		private function validateLastName($ln){
+		private function validateLastName($ln) {
 			if(strlen($ln) > 25 || strlen($ln) < 2) {
 				array_push($this->error, Constants::$lastNameCharacters);
 				return;
@@ -73,7 +83,7 @@
 		
 		}
 
-		private function validateEmails($em, $em2){
+		private function validateEmails($em, $em2) {
 			if($em != $em2) {
 				array_push($this->error, Constants::$emailsDoNotMatch);
 				return;
@@ -84,7 +94,15 @@
 				return;
 			}
 
-			// To-do: Check if user name exists
+			$query = "SELECT email From users WHERE email='$em'";
+			$checkEmailQuery = $this->pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+			$checkEmailQuery->execute();
+			$rowCount = $checkEmailQuery->rowCount();
+
+			if ($rowCount != 0) {
+				array_push($this->error, Constants::$emailTaken);
+				return;
+			}
 		}
 
 		private function validatePasswords($pw, $pw2) {
