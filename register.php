@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
 
-  <body class="background">
+  <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -68,73 +68,74 @@
     </nav>
 
     <main role="main" class="container">
-      <div>
-        <div id="inputContainer">
-         
-      		<form id="loginForm" action="register.php" method="POST">
-      			<h2>Got an account?</h2>	
-      			<div class="form-group">
-              <?php echo $account->getError(Constants::$loginFailed); ?>
-      				<label for="loginUsername">User</label>
-      				<input type="email" class="form-control" id="loginUsername" name="loginUsername" type="text" placeholder="email" required>
-      				<small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
-      			</div>
-      			<div class="form-group">
-      				<label for="loginPassword">Password</label>
-      				<input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password"  required>
-      			</div>
-      			<button type="submit" name="loginButton" class="btn btn-primary">LOG IN</button>
-      		</form>
-         
-    		<hr>
-          
-      		<form id="registerForm" action="register.php" method="POST">
-      			<h2>Want a free account?</h2>
-      			<div class="form-group">
-              <?php echo $account->getError(Constants::$nickNameCharacters); ?>
-              <?php echo $account->getError(Constants::$userNameTaken); ?>
-      				<label for="nickname">Nick Name</label>
-      				<input type="text" class="form-control" id="nickname" name="nickname" placeholder="Nickname" value="<?php getInputValue('nickname') ?>" required>
-      			</div>
-      			<div class="form-group">
-              <?php echo $account->getError(Constants::$firstNameCharacters); ?>
-      				<label for="firstName">First Name</label>
-      				<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" value="<?php getInputValue('firstName') ?>" required>
-      			</div>
-      			<div class="form-group">
-              <?php echo $account->getError(Constants::$lastNameCharacters); ?>
-      				<label for="lastName">Last Name</label>
-      				<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" value="<?php getInputValue('lastName') ?>" required>
-      			</div>
-      			<div class="form-group">
-              <?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
-              <?php echo $account->getError(Constants::$emailInvalid); ?>
-      				<label for="email">Your Email</label>
-      				<input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php getInputValue('email') ?>" required>
-      				<small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
-      			</div>      			
-      			<div class="form-group">
-      				<label for="email2">Confirm Email</label>
-      				<input type="email" class="form-control" id="email2" name="email2" placeholder="Email" value="<?php getInputValue('email2') ?>" required>
-      				<small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
-      			</div>
-      			<div class="form-group">
-              <?php echo $account->getError(Constants::$passwordsDoNotMatch); ?>
-              <?php echo $account->getError(Constants::$passwordNotAlphanumeric); ?>
-              <?php echo $account->getError(Constants::$passwordCharacters); ?>
-              <?php echo $account->getError(Constants::$emailTaken); ?>
-      				<label for="password">Password</label>
-      				<input type="password" class="form-control" id="password" name="password" placeholder="Password"  required>
-      			</div>
-      			<div class="form-group">
-      				<label for="password2">Confirm Password</label>
-      				<input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password"  required>
-      			</div>
-      			<button type="submit" name="registerButton" class="btn btn-primary">SIGN UP</button>
-      	 </form>
-        
-	      </div>
-      </div>
+      <div class="login-container">
+
+        <div class="input-container">
+          <div class="login-content">
+            <form id="loginForm" action="register.php" method="POST">
+              <h2>Got an account?</h2>  
+              <div class="form-group">
+                <?php echo $account->getError(Constants::$loginFailed); ?>
+                <label for="loginUsername">User</label>
+                <input type="email" class="form-control" id="loginUsername" name="loginUsername" type="text" placeholder="email" required>
+                <small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password"  required>
+              </div>
+              <button type="submit" name="loginButton" class="btn btn-primary">LOG IN</button>
+            </form>
+          </div>
+    		  <hr>
+          <div class="login-content">
+        		<form id="registerForm" action="register.php" method="POST">
+        			<h2>Want a free account?</h2>
+        			<div class="form-group">
+                <?php echo $account->getError(Constants::$nickNameCharacters); ?>
+                <?php echo $account->getError(Constants::$userNameTaken); ?>
+        				<label for="nickname">Nick Name</label>
+        				<input type="text" class="form-control" id="nickname" name="nickname" placeholder="Nickname" value="<?php getInputValue('nickname') ?>" required>
+        			</div>
+        			<div class="form-group">
+                <?php echo $account->getError(Constants::$firstNameCharacters); ?>
+        				<label for="firstName">First Name</label>
+        				<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" value="<?php getInputValue('firstName') ?>" required>
+        			</div>
+        			<div class="form-group">
+                <?php echo $account->getError(Constants::$lastNameCharacters); ?>
+        				<label for="lastName">Last Name</label>
+        				<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" value="<?php getInputValue('lastName') ?>" required>
+        			</div>
+        			<div class="form-group">
+                <?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
+                <?php echo $account->getError(Constants::$emailInvalid); ?>
+        				<label for="email">Your Email</label>
+        				<input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php getInputValue('email') ?>" required>
+        				<small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
+        			</div>      			
+        			<div class="form-group">
+        				<label for="email2">Confirm Email</label>
+        				<input type="email" class="form-control" id="email2" name="email2" placeholder="Email" value="<?php getInputValue('email2') ?>" required>
+        				<small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
+        			</div>
+        			<div class="form-group">
+                <?php echo $account->getError(Constants::$passwordsDoNotMatch); ?>
+                <?php echo $account->getError(Constants::$passwordNotAlphanumeric); ?>
+                <?php echo $account->getError(Constants::$passwordCharacters); ?>
+                <?php echo $account->getError(Constants::$emailTaken); ?>
+        				<label for="password">Password</label>
+        				<input type="password" class="form-control" id="password" name="password" placeholder="Password"  required>
+        			</div>
+        			<div class="form-group">
+        				<label for="password2">Confirm Password</label>
+        				<input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password"  required>
+        			</div>
+        			<button type="submit" name="registerButton" class="btn btn-primary">SIGN UP</button>
+        	 </form>
+         </div>
+	      </div> <!-- login-container -->
+      </div> <!-- login-content -->
 
     </main><!-- /.container -->
 
