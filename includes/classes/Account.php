@@ -48,7 +48,7 @@
 			if(!in_array($errorMessage, $this->error)){
 				$errorMessage = "";
 			}
-			return "<span class='errorMessage'>$errorMessage</span>";
+			return "$errorMessage";
 		}
 
 		private function insertUserDetails($nn, $fn, $ln, $em, $em2, $pw, $pw2) {

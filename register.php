@@ -53,16 +53,14 @@
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
-
         <!-- Login button trigger modal -->
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#loginModal">
+        <a href="#" role="button" class="btn btn-link" data-toggle="modal" data-target="#loginModal">
           Login
-        </button>  <!-- End- Login button trigger modal -->
+        </a>  <!-- End- Login button trigger modal -->
         <!-- Signup button trigger modal -->
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#signupModal">
+        <a href="#" role="button" class="btn btn-link" data-toggle="modal" data-target="#signupModal">
           Sign up
-        </button> <!-- End - Signup button trigger modal -->
-
+        </a> <!-- End - Signup button trigger modal -->
       </div>
     </nav>
   
@@ -165,6 +163,13 @@
           </div> <!-- modal-dialog -->
         </div> <!-- Modal -->
       </div> <!-- Signup -->
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-3">Stream</h1>
+          <p class="lead">Listen to podacasts on the go</p>
+        </div>
+      </div>
 
     </main> <!-- /.container -->
 

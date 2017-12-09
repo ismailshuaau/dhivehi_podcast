@@ -15,3 +15,8 @@ body {
 #main {
 	margin-top: 56px;
 }
+
+.jumbotron {
+	background-color: #03a9f485;
+	/*background-color: #03a9f475;*/
+}
