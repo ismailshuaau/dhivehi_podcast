@@ -1,39 +1,17 @@
-/*html,
+html,
 body {
 	padding: 0;
 	margin: 0;
 	height: 100%;
-}*/
-/*
-#main {
-	margin-top: 56px;
-}*/
+}
 
 body {
     background-image: url(../images/bg.jpg);
+    padding-top:5em;
     background-position: center;
     background-size: cover;
-/*    height: 100%;
-    width: 100%*/
 }
 
-.input-container * {
-	color: #ffffff;
-	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-	font-weight: normal;
-	line-height: 1em;
-	box-sizing: border-box;
-}
-
-.input-container {
-	margin-top: 78px;
-	padding: 15% 0;
-	position: relative;
-	max-width: 1024px;
-	background-color: #0f0913d1;
-}
-
-.login-content {
-	width: 80%;
-    margin: 0 auto;
+#main {
+	margin-top: 56px;
 }
