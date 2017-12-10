@@ -83,12 +83,12 @@
                   <div class="form-group">
                     <?php echo $account->getError(Constants::$loginFailed); ?>
                     <label for="loginUsername">User</label>
-                    <input type="email" class="form-control" id="loginUsername" name="loginUsername" type="text" placeholder="email" required>
+                    <input type="email" class="form-control" id="loginUsername" name="loginUsername" type="text" placeholder="email" value="<?php getInputValue('loginUsername') ?>" required>
                     <small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
                   </div>
                   <div class="form-group">
                     <label for="loginPassword">Password</label>
-                    <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password"  required>
+                    <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="password" required>
                   </div>
                 </div> <!-- modal-body -->
                 <div class="modal-footer">
@@ -118,28 +118,28 @@
                       <?php echo $account->getError(Constants::$nickNameCharacters); ?>
                       <?php echo $account->getError(Constants::$userNameTaken); ?>
                       <label for="nickname">Nick Name</label>
-                      <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Nickname" value="<?php getInputValue('nickname') ?>" required>
+                      <input type="text" class="form-control" id="nickname" name="nickname" placeholder="nickname" value="<?php getInputValue('nickname') ?>" required>
                     </div>
                     <div class="form-group">
                     <?php echo $account->getError(Constants::$firstNameCharacters); ?>
                       <label for="firstName">First Name</label>
-                      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" value="<?php getInputValue('firstName') ?>" required>
+                      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="first Name" value="<?php getInputValue('firstName') ?>" required>
                     </div>
                     <div class="form-group">
                       <?php echo $account->getError(Constants::$lastNameCharacters); ?>
                       <label for="lastName">Last Name</label>
-                       <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" value="<?php getInputValue('lastName') ?>" required>
+                       <input type="text" class="form-control" id="lastName" name="lastName" placeholder="last Name" value="<?php getInputValue('lastName') ?>" required>
                     </div>
                     <div class="form-group">
                       <?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
                       <?php echo $account->getError(Constants::$emailInvalid); ?>
                       <label for="email">Your Email</label>
-                      <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php getInputValue('email') ?>" required>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="email" value="<?php getInputValue('email') ?>" required>
                       <small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
                     </div>                 
                     <div class="form-group">
                       <label for="email2">Confirm Email</label>
-                      <input type="email" class="form-control" id="email2" name="email2" placeholder="Email" value="<?php getInputValue('email2') ?>" required>
+                      <input type="email" class="form-control" id="email2" name="email2" placeholder="email" value="<?php getInputValue('email2') ?>" required>
                       <small id="emailHelp" class="form-text-muted">Your email is safe with us</small>
                     </div>
                     <div class="form-group">
@@ -148,11 +148,11 @@
                       <?php echo $account->getError(Constants::$passwordCharacters); ?>
                       <?php echo $account->getError(Constants::$emailTaken); ?>
                       <label for="password">Password</label>
-                      <input type="password" class="form-control" id="password" name="password" placeholder="Password"  required>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="password"  required>
                     </div>
                     <div class="form-group">
                       <label for="password2">Confirm Password</label>
-                      <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password"  required>
+                      <input type="password" class="form-control" id="password2" name="password2" placeholder="password"  required>
                     </div>
                 </div> <!-- modal-body -->
                 <div class="modal-footer">
