@@ -50,6 +50,7 @@ body {
     align-items: center;
 }
 
+
 .now-playing-bar .content {
 	width: 100%;
 	text-align: center;
@@ -58,11 +59,37 @@ body {
 .player-controls .fa {
 	margin: 0 auto;
     font-size: 20px;
-    color: aqua;
+    color: #0c6b6b;
     border: transparent;
     background: transparent;
 }
 
 .player-controls .fa-pause-circle-o {
 	display: none;
+}
+
+.player-controls .fa-pause-circle,
+.player-controls .fa-play-circle {
+	font-size: 30px;
+}
+
+.control-button:hover {
+	cursor:pointer;
+}
+
+.play-back-bar {
+    display: flex;
+}
+
+.play-back-bar .progress-time {
+    color: #757575;
+    font-size: 14px;
+    min-width: 40px;
+}
+
+.play-back-bar .pogress-bar {
+    width: 100%;
+    height: 12px;
+    display: inline-flex;
+    cursor: pointer;
 }
