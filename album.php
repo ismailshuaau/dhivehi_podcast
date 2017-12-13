@@ -7,7 +7,7 @@
 				<?php include("includes/submenu.php") ?>
 				<div class="main-view-container">
 		  			<div class="main-content">
-		  				<?php include('includes/home-content.php') ?>
+		  				<?php include('includes/album-content.php') ?>
 		  			</div>
 		  		</div>
 			</div>
