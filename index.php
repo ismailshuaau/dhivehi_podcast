@@ -9,28 +9,20 @@ include("includes/config.php");
 ?>
 
 <html lang="en">
-	<head>
-	 	<meta charset="utf-8">
-	 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	 	<meta name="description" content="">
-	 	<meta name="author" content="">
-	 	<link rel="icon" href="../../../../favicon.ico">
+	<!-- Header -->
+	<?php include('includes/header.php') ?>
+	<!-- END - HEADER -->
 
-	 	<title>Dhivehi Podcast</title>
-
-	 	<!-- Bootstrap core CSS -->
-	 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	 	<!-- Fontawesome -->
-	 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-	 	<!-- Custom styles for this template -->
-	 	<link rel="stylesheet" href="assets/css/style.css">
-	</head>
-
-	<body>
+	<body class="body-player">
 
 		<div class="main-container">
 			<div class="top-container">
 				<?php include("includes/submenu.php") ?>
+					<div class="main-view-container">
+		  				<div class="main-content">
+		  					<?php include('includes/content.php') ?>
+		  				</div>
+		  			</div>
 			</div>
 		  	<?php include("includes/now-playing.php") ?>
 		</div>

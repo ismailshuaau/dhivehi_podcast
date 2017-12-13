@@ -7,9 +7,15 @@ body {
 
 body {
     background-image: url(../images/bg.jpg);
-    padding-top:5em;
+    /*padding-top:5em;*/
     background-position: center;
     background-size: cover;
+    font-size: 14px;
+}
+
+.body-player {
+    background: #000000f5;
+    min-width: 720px;
 }
 
 * {
@@ -183,4 +189,41 @@ body {
 .nav-link:hover,
 .navbar-brand:hover {
     color: #19c0da;
+}
+
+.main-view-container {
+    margin-left: 200px;
+    padding-bottom: 90px;
+    width: calc(100% - 220px);;
+}
+
+.main-content {
+    padding: 0 20px;
+}
+
+.card-view {
+    display: inline-block;
+    margin-right: 20px;
+    width: 29%;
+    max-width: 200px;
+    min-width: 150px;
+    margin-bottom: 20px
+}
+
+.card-view img {
+    width:100%
+}
+
+.album-caption {
+    font-weight: 300;
+    text-align: center;
+    padding: 5px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.card-view a:hover {
+    color: #199cad;
+    /*text-decoration: none;*/
 }
