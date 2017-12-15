@@ -1,6 +1,6 @@
 <?php
 
-	class Artist{
+	class Artist {
 
 		private $pdo;
 		private $id;

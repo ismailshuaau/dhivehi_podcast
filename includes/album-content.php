@@ -8,16 +8,12 @@
 		}
 
 		// Album Query
-		$albumQuery = "SELECT * FROM albums WHERE id='$albumId'";
-		$albumQueries = $pdo->prepare($albumQuery, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-		$albumQueries->execute();
 
-		foreach ($albumQueries as $album) {
-		 	echo $album['title'] . "<br>";
-		}
+		$album = new Album($pdo, $albumId);
+		$artist = $album->getArtist();
 
+		echo $album->getTitle() . "<br>";
 		// Call the artist method
-		$artist = new Artist($pdo, $album['artist']);
 		echo $artist->getName();
 
 	 ?>
