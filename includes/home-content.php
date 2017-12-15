@@ -3,21 +3,21 @@
 
 <div class="row">
 	<?php
-		$query = "SELECT * FROM albums ORDER BY RAND() LIMIT 10";
-		$albumQueries = $pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+		$albumQuery = "SELECT * FROM albums ORDER BY RAND() LIMIT 10";
+		$albumQueries = $pdo->prepare($albumQuery, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 		$albumQueries->execute();
 		$rowCount = $albumQueries->rowCount();
 
-		foreach ($albumQueries as $albumQuery) {
+		foreach ($albumQueries as $album) {
 			echo "<div class='card-view'>
-					<a href='album.php?id=" . $albumQuery['id'] . "'>
-						<img src='". $albumQuery['artworkPath'] . "'>
+					<a href='album.php?id=" . $album['id'] . "'>
+						<img src='". $album['artworkPath'] . "'>
 						<div class='album-caption'>"
-							. $albumQuery['title'] .
+							. $album['title'] .
 						"</div>
 					</a>
 				</div>";
 		}
-	
+
 	?>
 </div>

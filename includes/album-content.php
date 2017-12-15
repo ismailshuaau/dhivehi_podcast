@@ -7,14 +7,18 @@
 			header("Location: index.php");
 		}
 
-		$query = "SELECT * FROM albums WHERE id='$albumId'";
-		$albumQueries = $pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+		// Album Query
+		$albumQuery = "SELECT * FROM albums WHERE id='$albumId'";
+		$albumQueries = $pdo->prepare($albumQuery, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 		$albumQueries->execute();
-		$rowCount = $albumQueries->rowCount();
 
-		foreach ($albumQueries as $albumQuery) {
-		 	echo $albumQuery['title'];
-		 } 
+		foreach ($albumQueries as $album) {
+		 	echo $album['title'] . "<br>";
+		}
+
+		// Call the artist method
+		$artist = new Artist($pdo, $album['artist']);
+		echo $artist->getName();
 
 	 ?>
 
