@@ -21,7 +21,7 @@
 				$this->title = $album['title'];
 				$this->artistId = $album['artist'];
 				$this->genre = $album['genre'];
-				$this->artworkPath['artworkPath'];
+				$this->artworkPath = $album['artworkPath'];
 			}
 
 			
@@ -41,6 +41,25 @@
 		}
 
 		public function getartworkPath() {
-			return $this->getartworkPath;
+			return $this->artworkPath;
+		}
+
+		public function getNumberOfSongs() {
+			$query = "SELECT id FROM songs WHERE album='$this->id'";
+			$songs = $this->pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+			$songs->execute();
+			echo $songs->rowCount();
+		}
+
+		public function getSongIds() {
+			$query = "SELECT id FROM songs WHERE album='$this->id'";
+			$ids = $this->pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+			$ids->execute();
+			return $ids;
+			// $rows = $ids->rowCount();
+			
+			// foreach ($ids as $id) {
+			// 	echo $id['id'] . '</br>';
+			// }
 		}
 	} 
