@@ -32,10 +32,26 @@
 
 
 	 			$songIds = $album->getSongIds();
-
+	 			$i = 1; // To count track
 	 			foreach ($songIds as $songId) {
 	 				$albumSong = new Song($pdo, $songId['id']);
-	 				echo $albumSong->getTitle();
+	 				$albumList = $albumSong->getArtist();
+
+	 				echo "<li class='track-item'>
+							<div class='track-count'>
+								<i class='fa fa-play-circle-o' aria-hidden='true'></i>
+								<span class='track-number'>$i</span>
+							</div>
+							<div class='track-info'>
+								<span class='track-name'>" . $albumSong->getTitle() . "</span>
+								<span class='artist-name'>" . $albumList->getName() . "</span>
+							</div>
+							<div class='track-options'>
+								<i class='fa fa-caret-down' aria-hidden='true'></i>
+							</div>
+						  </li>";
+
+	 				$i++;  // To count track
 	 			}
 
 	 		 ?>
