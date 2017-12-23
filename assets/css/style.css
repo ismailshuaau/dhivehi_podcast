@@ -255,3 +255,82 @@ body {
     color: #33a2e4;
     font-weight: 200px;
 }
+
+.track-section {
+    width: 100%;
+}
+
+.track-list {
+    padding: 0;
+}
+
+.track-item {
+    padding: 15px 10px;
+    list-style: none;
+}
+
+.track-item span {
+    color: #33a2e4;
+    font-weight: 200;
+}
+
+.track-item:hover {
+    background-color: #3f4244b3;
+}
+
+.track-item .track-count {
+    width: 8%;
+    float: left;
+}
+
+.track-item .track-count .fa {
+    visibility: hidden;
+    position: absolute;
+    cursor: pointer;
+}
+
+.track-item:hover .track-count .fa {
+    visibility: visible;
+}
+
+.track-item:hover .track-count span {
+    visibility: visible;
+}
+
+.track-item:hover .track-count span {
+    visibility: hidden;
+}
+
+.track-item .track-info {
+    width: 75%;
+    float: left;
+}
+
+.track-item .track-info span {
+    display: block;
+}
+
+.track-list .track-item .track-options {
+    width: 5%;
+    float: left;
+    text-align: center;
+}
+
+.track-item .track-options {
+    visibility: hidden;
+}
+
+.track-item:hover .track-options {
+    visibility: visible;
+}
+
+/*.track-list .track-item .track-duration {
+    width: 12%;
+    float: left;
+    text-align: right;
+}*/
+
+.track-item .track-info .track-name {
+    color: #93f3ff;
+    margin-bottom: 4px;
+}

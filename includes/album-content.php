@@ -49,6 +49,9 @@
 							<div class='track-options'>
 								<i class='fa fa-caret-down' aria-hidden='true'></i>
 							</div>
+							<div class='track-duration'>
+								<span class='duration'>" . $albumSong->getDuration() . "</span>
+							</div>
 						  </li>";
 
 	 				$i++;  // To count track
