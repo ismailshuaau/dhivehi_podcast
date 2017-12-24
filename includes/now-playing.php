@@ -23,23 +23,26 @@ $jsonArray = json_encode($results);
 		$.post("includes/Handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
 
 			var track = JSON.parse(data);
-
 			//  Title of the song
 			$(".track-name").text(track[0].title);
 			
-			// artist Id
+			// get artist Id
 			var trackArtist = track[0].artist;
-
-			// Find the artist name ising artist id retrived from track
+			// Find the artist name using artist id retrived from track
 			$.post("includes/Handlers/ajax/getArtistJson.php", { artistId: trackArtist }, function(data) {
-
 				var artist = JSON.parse(data);
-
 				$(".artist-name").text(artist[0].name);
-				console.log(artist[0].name);
-
 			});
 
+			//  Get the album Id
+			var trackAlbum = track[0].album;
+			// Find the artist name using id retrive from track
+			$.post("includes/Handlers/ajax/getAlbumJson.php", { albumId: trackAlbum }, function(data) {
+				var album = JSON.parse(data);
+				$(".album-link img").attr("src", album[0].artworkPath);
+			});
+
+			
 			audioElement.setTrack(track[0].path);
 			audioElement.play();
 		});
@@ -68,7 +71,7 @@ $jsonArray = json_encode($results);
 		<div class="now-playing-left">
 			<div class="content">
 				<span class="album-link">
-					<img src="https://images.pexels.com/photos/555206/pexels-photo-555206.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="" class="album-art">
+					<img src="" alt="" class="album-art">
 				</span>
 				<div class="track-info">
 					<span class="track-name"></span>
@@ -89,7 +92,7 @@ $jsonArray = json_encode($results);
 					<button class="control-button fa fa fa-repeat" aria-hidden="true" title="repeat" alt="repeat"></button>
 				</div> <!-- buttons -->
 				<div class="play-back-bar">
-					<span class="progress-time current">0.00</span>
+					<span id="progress-time" class="progress-time current">0.00</span>
 					<div class="progress-bar-control">
 						<div class="progress-bar-bg">
 							<div class="progress-slide"></div>
