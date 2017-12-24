@@ -21,7 +21,27 @@ $jsonArray = json_encode($results);
 	function setTrack(trackId, newPlayList, play) {
 		
 		$.post("includes/Handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
-			console.log(data);
+
+			var track = JSON.parse(data);
+
+			//  Title of the song
+			$(".track-name").text(track[0].title);
+			
+			// artist Id
+			var trackArtist = track[0].artist;
+
+			// Find the artist name ising artist id retrived from track
+			$.post("includes/Handlers/ajax/getArtistJson.php", { artistId: trackArtist }, function(data) {
+
+				var artist = JSON.parse(data);
+
+				$(".artist-name").text(artist[0].name);
+				console.log(artist[0].name);
+
+			});
+
+			audioElement.setTrack(track[0].path);
+			audioElement.play();
 		});
 
 		if (play) {
@@ -51,10 +71,10 @@ $jsonArray = json_encode($results);
 					<img src="https://images.pexels.com/photos/555206/pexels-photo-555206.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="" class="album-art">
 				</span>
 				<div class="track-info">
-					<span class="track-name">Name of the song</span>
+					<span class="track-name"></span>
 				</div>
 				<div class="track-info">
-					<span class="artist-name">Ismail shuaau</span>
+					<span class="artist-name"></span>
 				</div>
 			</div>
 		</div>
