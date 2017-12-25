@@ -98,7 +98,7 @@ $jsonArray = json_encode($results);
 					<button class="control-button fa fa fa-repeat" aria-hidden="true" title="repeat" alt="repeat"></button>
 				</div> <!-- buttons -->
 				<div class="play-back-bar">
-					<span id="progress-time" class="progress-time current">0.00</span>
+					<span class="progress-time current">0.00</span>
 					<div class="progress-bar-control">
 						<div class="progress-bar-bg">
 							<div class="progress-slide"></div>

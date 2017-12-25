@@ -12,6 +12,13 @@ function formatTime(seconds) {
 	return minutes + ":" + addZero + seconds;
 }
 
+
+function updateTimeProgressBar(audio) {
+	$(".progress-time.current").text(formatTime(audio.currentTime));
+	$(".progress-time.remaining").text(formatTime(audio.duration - audio.currentTime));
+}
+
+
 function Audio() {
 	 // Property of the class
 	this.currentlyPlaying;
@@ -20,6 +27,12 @@ function Audio() {
 	this.audio.addEventListener("canplay", function() {
 		var duration = formatTime(this.duration);
 		$(".progress-time.remaining").text(duration);
+	});
+
+	this.audio.addEventListener("timeupdate", function() {
+		if(this.duration) {
+			updateTimeProgressBar(this);
+		}
 	});
 
 	this.setTrack = function(track) {
