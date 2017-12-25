@@ -1,6 +1,16 @@
 var currentPlayList = [];
 var audioElement;
 
+function formatTime(seconds) {
+	var time = Math.round(seconds);
+	var minutes = Math.floor(time / 60);
+	var seconds = time - (minutes * 60);
+
+	//  add a zero if seconds is less then 10
+	var addZero = (seconds < 10) ? "0" : "";
+
+	return minutes + ":" + addZero + seconds;
+}
 
 function Audio() {
 	 // Property of the class
@@ -8,7 +18,8 @@ function Audio() {
 	this.audio = document.createElement("audio");
 
 	this.audio.addEventListener("canplay", function() {
-		$(".progress-time.remaining").text(this.duration);
+		var duration = formatTime(this.duration);
+		$(".progress-time.remaining").text(duration);
 	});
 
 	this.setTrack = function(track) {
