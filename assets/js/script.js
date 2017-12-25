@@ -11,9 +11,9 @@ function Audio() {
 		$(".progress-time.remaining").text(this.duration);
 	});
 
-	this.setTrack = function(src) {
-		this.audio.src = src;
-		return this;
+	this.setTrack = function(track) {
+		this.currentlyPlaying = track;
+		this.audio.src = track[0].path;
 	};
 
 	this.play = function() {

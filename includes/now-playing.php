@@ -43,8 +43,8 @@ $jsonArray = json_encode($results);
 			});
 
 			
-			audioElement.setTrack(track[0].path);
-			audioElement.play();
+			audioElement.setTrack(track);
+			playMusic();
 		});
 
 		if (play) {
@@ -53,6 +53,12 @@ $jsonArray = json_encode($results);
 	}
 
 	function playMusic() {
+
+		// update the number of plays in the database
+		if(audioElement.audio.currentTime == 0) {
+			$.post("includes/Handlers/ajax/updatePlaysJson.php", { songId: audioElement.currentlyPlaying[0].id });
+		} 
+
 		$("#play").hide();
 		$("#pause").show();
 		audioElement.play();
