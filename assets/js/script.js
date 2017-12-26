@@ -23,6 +23,11 @@ function updateTimeProgressBar(audio) {
 
 }
 
+function updateVolumeProgressBar(audio) {
+	var volume = audio.volume * 100;
+	$(".now-playing-right .progress-slide").css("width", volume + "%");
+}
+
 
 function Audio() {
 	 // Property of the class
@@ -32,12 +37,17 @@ function Audio() {
 	this.audio.addEventListener("canplay", function() {
 		var duration = formatTime(this.duration);
 		$(".progress-time.remaining").text(duration);
+		updateVolumeProgressBar(this);
 	});
 
 	this.audio.addEventListener("timeupdate", function() {
 		if(this.duration) {
 			updateTimeProgressBar(this);
 		}
+	});
+
+	this.audio.addEventListener("volumechange", function() {
+		updateVolumeProgressBar(this);
 	});
 
 	this.setTrack = function(track) {

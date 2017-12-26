@@ -15,6 +15,7 @@ $jsonArray = json_encode($results);
 		currentPlayList = <?php echo $jsonArray ?>;
 		audioElement = new Audio();
 		setTrack(currentPlayList[0], currentPlayList, false);
+		updateVolumeProgressBar(audioElement.audio);
 
 		$(document).mouseup(function() {
 			mouseDown = false;
@@ -65,7 +66,6 @@ $jsonArray = json_encode($results);
 	});
 
 	// drag progress bar with mouse click
-	
 	function timefromOffset(mouse, progressbarcontrol) {
 		var percentage =  mouse.offsetX / $(progressbarcontrol).width() * 100;
 		var seconds = audioElement.audio.duration * (percentage / 100);
@@ -173,7 +173,7 @@ $jsonArray = json_encode($results);
 							<div class="progress-slide"></div>
 						</div>
 					</div>
-				</div>
+				</div> <!-- volume-bar -->
 			</div>
 		</div>
 	</div> <!-- now-playing-bar -->
