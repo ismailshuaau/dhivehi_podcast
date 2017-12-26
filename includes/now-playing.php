@@ -16,8 +16,62 @@ $jsonArray = json_encode($results);
 		audioElement = new Audio();
 		setTrack(currentPlayList[0], currentPlayList, false);
 
+		$(document).mouseup(function() {
+			mouseDown = false;
+		});
+
+		/*****************************
+		 *	Control the playback bar *
+		 *						   	 *
+		 ****************************/
+		$(".play-back-bar .progressbarcontrol").mousedown(function() {
+			mouseDown = true;
+		});
+
+		$(".play-back-bar .progressbarcontrol").mousemove(function(e) {
+			if (mouseDown = true) {
+				//  Set the time of song
+				timefromOffset(e, this);
+			}
+		});
+
+		$(".play-back-bar .progressbarcontrol").mouseup(function(e) {
+			timefromOffset(e, this);
+		});
+
+		/***************************
+		 *	Control the volume bar *
+		 *						   *
+		 **************************/
+		$(".volume-bar .progressbarcontrol").mousedown(function() {
+			mouseDown =  true;
+		});
+
+		$(".volume-bar .progressbarcontrol").mousemove(function(e) {
+			if (mouseDown = true) {
+				var percentage = e.offsetX / $(this).width();
+				audioElement.audio.volume = percentage;
+			}
+		});
+
+		$(".volume-bar .progressbarcontrol").mouseup(function(e) {
+			var percentage = e.offsetX / $(this).width();
+			if (percentage >= 0 && percentage <= 1) {
+				audioElement.audio.volume = percentage;
+			}
+		});
+
+
 	});
 
+	// drag progress bar with mouse click
+	
+	function timefromOffset(mouse, progressbarcontrol) {
+		var percentage =  mouse.offsetX / $(progressbarcontrol).width() * 100;
+		var seconds = audioElement.audio.duration * (percentage / 100);
+		audioElement.setTime(seconds);
+	}
+	
 	function setTrack(trackId, newPlayList, play) {
 		
 		$.post("includes/Handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
@@ -99,7 +153,7 @@ $jsonArray = json_encode($results);
 				</div> <!-- buttons -->
 				<div class="play-back-bar">
 					<span class="progress-time current">0.00</span>
-					<div class="progress-bar-control">
+					<div class="progressbarcontrol">
 						<div class="progress-bar-bg">
 							<div class="progress-slide"></div>
 						</div>
@@ -110,15 +164,13 @@ $jsonArray = json_encode($results);
 		</div>
 		<div class="now-playing-right">
 			<div class="player-controls">
-				<div class="play-back-bar volume">
+				<div class="volume-bar">
 					<div class="buttons">
 						<button class="control-button fa fa-volume-up" aria-hidden="true" title="volume" alt="repeat"></button>
 					</div>
-					<div class="progress-bar-control">
+					<div class="progressbarcontrol">
 						<div class="progress-bar-bg">
-							<div class="progress-slide">
-								
-							</div>
+							<div class="progress-slide"></div>
 						</div>
 					</div>
 				</div>

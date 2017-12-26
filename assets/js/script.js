@@ -1,5 +1,6 @@
 var currentPlayList = [];
 var audioElement;
+var mouseDown = false;
 
 function formatTime(seconds) {
 	var time = Math.round(seconds);
@@ -16,6 +17,10 @@ function formatTime(seconds) {
 function updateTimeProgressBar(audio) {
 	$(".progress-time.current").text(formatTime(audio.currentTime));
 	$(".progress-time.remaining").text(formatTime(audio.duration - audio.currentTime));
+
+	var progress = audio.currentTime / audio.duration * 100;
+	$(".now-playing-center .progress-slide").css("width", progress + "%");
+
 }
 
 
@@ -46,6 +51,10 @@ function Audio() {
 	
 	this.pause = function() {
 		this.audio.pause();
+	}
+
+	this.setTime = function(seconds) {
+		this.audio.currentTime = seconds;
 	}
 
 }

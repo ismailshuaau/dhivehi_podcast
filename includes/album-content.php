@@ -30,7 +30,6 @@
 	 	<ul class="track-list">
 	 		<?php 
 
-
 	 			$songIds = $album->getSongIds();
 	 			$i = 1; // To count track
 	 			foreach ($songIds as $songId) {
