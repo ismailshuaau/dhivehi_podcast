@@ -71,10 +71,26 @@ $jsonArray = json_encode($results);
 		var seconds = audioElement.audio.duration * (percentage / 100);
 		audioElement.setTime(seconds);
 	}
+
+	function nextSong() {
+		if(currentIndex == currentPlayList.length - 1) {
+			currentIndex = 0;
+		} else {
+			currentIndex++;
+		}
+		
+		var trackToPlay = currentPlayList[currentIndex];
+
+		console.log(trackToPlay);
+
+		setTrack(trackToPlay, currentPlayList, true);
+	}	
 	
 	function setTrack(trackId, newPlayList, play) {
 		
 		$.post("includes/Handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
+
+			currentIndex = currentPlayList.indexOf(trackId);
 
 			var track = JSON.parse(data);
 			//  Title of the song
