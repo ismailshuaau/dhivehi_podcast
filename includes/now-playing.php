@@ -72,6 +72,16 @@ $jsonArray = json_encode($results);
 		audioElement.setTime(seconds);
 	}
 
+	function prevSong() {
+		if (audioElement.audio.currentTime >= 3 || currentIndex == 0) {
+			audioElement.setTime(0);
+		}
+		else {
+			currentIndex = currentIndex - 1;
+			setTrack(currentPlayList[currentIndex], currentPlayList, true);
+		}
+	}
+
 	function nextSong() {
 		if (repeat) {
 			audioElement.setTime(0);
@@ -87,18 +97,28 @@ $jsonArray = json_encode($results);
 		
 		var trackToPlay = currentPlayList[currentIndex];
 
-		console.log(trackToPlay);
-
 		setTrack(trackToPlay, currentPlayList, true);
-	}	
+	}
 
+	// Repeat button toggle
 	function setRepeat() {
 		repeat = !repeat;
-		
+
 		if (repeat) {
 			$("#repeat").css("color", "#2ebfbf");
 		} else {
 			$("#repeat").css("color", "#0c6b6b");
+		}
+	}
+
+	function setMute() {
+		audioElement.audio.muted = !audioElement.audio.muted;
+		if (audioElement.audio.muted) {
+			$( "#volume").removeClass("fa-volume-up");
+			$( "#volume").addClass("fa-volume-off");
+		} else {
+			$( "#volume").removeClass("fa-volume-off");
+			$( "#volume").addClass("fa-volume-up");
 		}
 	}
 	
@@ -161,6 +181,7 @@ $jsonArray = json_encode($results);
 
 <div class="now-playingbar-container">
 	<div class="now-playing-bar">
+		<p></p>
 		<div class="now-playing-left">
 			<div class="content">
 				<span class="album-link">
@@ -178,7 +199,7 @@ $jsonArray = json_encode($results);
 			<div class="content player-controls">
 				<div class="buttons">
 					<button class="control-button fa fa-random" aria-hidden="true" title="shuffle" alt="shuffle"></button>
-					<button class="control-button fa fa-caret-left" aria-hidden="true" title="previouse" alt="previouse"></button>
+					<button class="control-button fa fa-caret-left" aria-hidden="true" title="previouse" alt="previouse" onclick="prevSong()"></button>
 					<button id="play" class="control-button fa fa-play-circle" aria-hidden="true" title="play" alt="play" onclick="playMusic()"></button>
 					<button id="pause" class="control-button fa fa-pause-circle" aria-hidden="true" title="pause" alt="pause" onclick="pauseMusic()"></button>
 					<button class="control-button fa fa-caret-right" aria-hidden="true" title="next" alt="next" onclick="nextSong()"></button>
@@ -199,8 +220,8 @@ $jsonArray = json_encode($results);
 			<div class="player-controls">
 				<div class="volume-bar">
 					<div class="buttons">
-						<button class="control-button fa fa-volume-up" aria-hidden="true" title="volume" alt="repeat"></button>
-					</div>
+						<button id="volume" class="control-button fa fa-volume-up" aria-hidden="true" title="volume" alt="repeat" onclick="setMute()"></button>
+					</div> <!-- class="control-button fa fa-volume-up" -->
 					<div class="progressbarcontrol">
 						<div class="progress-bar-bg">
 							<div class="progress-slide"></div>
