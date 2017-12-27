@@ -73,6 +73,12 @@ $jsonArray = json_encode($results);
 	}
 
 	function nextSong() {
+		if (repeat) {
+			audioElement.setTime(0);
+			playSong();
+			return;
+		}
+		// Next Song
 		if(currentIndex == currentPlayList.length - 1) {
 			currentIndex = 0;
 		} else {
@@ -85,12 +91,23 @@ $jsonArray = json_encode($results);
 
 		setTrack(trackToPlay, currentPlayList, true);
 	}	
+
+	function setRepeat() {
+		repeat = !repeat;
+		
+		if (repeat) {
+			$("#repeat").css("color", "#2ebfbf");
+		} else {
+			$("#repeat").css("color", "#0c6b6b");
+		}
+	}
 	
 	function setTrack(trackId, newPlayList, play) {
+
+		currentIndex = currentPlayList.indexOf(trackId);
+		pauseMusic();
 		
 		$.post("includes/Handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
-
-			currentIndex = currentPlayList.indexOf(trackId);
 
 			var track = JSON.parse(data);
 			//  Title of the song
@@ -164,8 +181,8 @@ $jsonArray = json_encode($results);
 					<button class="control-button fa fa-caret-left" aria-hidden="true" title="previouse" alt="previouse"></button>
 					<button id="play" class="control-button fa fa-play-circle" aria-hidden="true" title="play" alt="play" onclick="playMusic()"></button>
 					<button id="pause" class="control-button fa fa-pause-circle" aria-hidden="true" title="pause" alt="pause" onclick="pauseMusic()"></button>
-					<button class="control-button fa fa-caret-right" aria-hidden="true" title="next" alt="next"></button>
-					<button class="control-button fa fa fa-repeat" aria-hidden="true" title="repeat" alt="repeat"></button>
+					<button class="control-button fa fa-caret-right" aria-hidden="true" title="next" alt="next" onclick="nextSong()"></button>
+					<button id="repeat" class="control-button fa fa fa-repeat" aria-hidden="true" title="repeat" onclick="setRepeat()" alt="repeat"></button>
 				</div> <!-- buttons -->
 				<div class="play-back-bar">
 					<span class="progress-time current">0.00</span>
