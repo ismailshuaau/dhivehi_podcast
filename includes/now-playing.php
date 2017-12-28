@@ -12,9 +12,9 @@ $jsonArray = json_encode($results);
 <script>
 	
 	$(document).ready(function(){
-		currentPlayList = <?php echo $jsonArray ?>;
+		var newPlayList = <?php echo $jsonArray ?>;
 		audioElement = new Audio();
-		setTrack(currentPlayList[0], currentPlayList, false);
+		setTrack(newPlayList[0], newPlayList, false);
 		updateVolumeProgressBar(audioElement.audio);
 
 		$(document).mouseup(function() {
@@ -95,12 +95,11 @@ $jsonArray = json_encode($results);
 			currentIndex++;
 		}
 		
-		var trackToPlay = currentPlayList[currentIndex];
-
+		var trackToPlay = shuffle ? shufflePlayList[currentIndex] : currentPlayList[currentIndex];
 		setTrack(trackToPlay, currentPlayList, true);
 	}
 
-	// Repeat button toggle
+	// Repeat button toggle	
 	function setRepeat() {
 		repeat = !repeat;
 
@@ -114,17 +113,60 @@ $jsonArray = json_encode($results);
 	function setMute() {
 		audioElement.audio.muted = !audioElement.audio.muted;
 		if (audioElement.audio.muted) {
-			$( "#volume").removeClass("fa-volume-up");
-			$( "#volume").addClass("fa-volume-off");
+			$("#volume").removeClass("fa-volume-up");
+			$("#volume").addClass("fa-volume-off");
 		} else {
-			$( "#volume").removeClass("fa-volume-off");
-			$( "#volume").addClass("fa-volume-up");
+			$("#volume").removeClass("fa-volume-off");
+			$("#volume").addClass("fa-volume-up");
 		}
+	}
+
+	function setShuffle() {
+		// Highlight button
+		shuffle = !shuffle;
+		if (shuffle) {
+			$("#shuffle").css("color", "#2ebfbf");
+		} else {
+			$('#shuffle').css("color", "#0c6b6b");
+		}
+		// Action
+		if (shuffle) {
+			// Randomize playlist.
+			shuffleArray(shufflePlayList);
+			currentIndex = shufflePlayList.indexOf(audioElement.currentlyPlaying.id);
+		} else {
+			// Turned off 
+			currentIndex = currentPlayList.indexOf(audioElement.currentlyPlaying.id);
+		}
+
+	}
+
+	function shuffleArray (array) {
+		for (var i = array.length - 1; i > 0; i--) {
+			var j = Math.floor(Math.random() * (i + 1));
+			var temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+
+		return array;
 	}
 	
 	function setTrack(trackId, newPlayList, play) {
 
-		currentIndex = currentPlayList.indexOf(trackId);
+		if(newPlayList != currentPlayList) {
+			currentPlayList = newPlayList;
+			shufflePlayList = currentPlayList.slice();
+			shuffleArray(shufflePlayList);
+		}
+
+		//  Shuffle on
+		if (shuffle) {
+			shuffleArray(shufflePlayList);
+			currentIndex = shufflePlayList.indexOf(trackId);
+		} else {
+			currentIndex = currentPlayList.indexOf(trackId);
+		}
 		pauseMusic();
 		
 		$.post("includes/Handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
@@ -148,7 +190,6 @@ $jsonArray = json_encode($results);
 				var album = JSON.parse(data);
 				$(".album-link img").attr("src", album[0].artworkPath);
 			});
-
 			
 			audioElement.setTrack(track);
 			playMusic();
@@ -198,7 +239,7 @@ $jsonArray = json_encode($results);
 		<div class="now-playing-center">
 			<div class="content player-controls">
 				<div class="buttons">
-					<button class="control-button fa fa-random" aria-hidden="true" title="shuffle" alt="shuffle"></button>
+					<button id="shuffle" class="control-button fa fa-random" aria-hidden="true" title="shuffle" alt="shuffle" onclick="setShuffle()"></button>
 					<button class="control-button fa fa-caret-left" aria-hidden="true" title="previouse" alt="previouse" onclick="prevSong()"></button>
 					<button id="play" class="control-button fa fa-play-circle" aria-hidden="true" title="play" alt="play" onclick="playMusic()"></button>
 					<button id="pause" class="control-button fa fa-pause-circle" aria-hidden="true" title="pause" alt="pause" onclick="pauseMusic()"></button>
