@@ -42,8 +42,8 @@
 								<span class='track-number'>$i</span>
 							</div>
 							<div class='track-info'>
-								<span class='track-name'>" . $albumSong->getTitle() . "</span>
-								<span class='artist-name'>" . $albumList->getName() . "</span>
+								<span id='track-name'>" . $albumSong->getTitle() . "</span>
+								<span id='artist-name'>" . $albumList->getName() . "</span>
 							</div>
 							<div class='track-options'>
 								<i class='fa fa-caret-down' aria-hidden='true'></i>
