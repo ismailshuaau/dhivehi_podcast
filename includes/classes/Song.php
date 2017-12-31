@@ -22,7 +22,6 @@
 			$results = $pdoData->fetchAll(PDO::FETCH_ASSOC);
 
 			foreach ( $results as $result ) {
-				$this->ids = $result['id'];
 				$this->title = $result['title'];
 				$this->artistId = $result['artist'];
 				$this->albumId = $result['album'];
@@ -35,7 +34,7 @@
 		}
 
 		public function getId() {
-			return $this->ids;
+			return $this->id;
 		}
 
 		public function getTitle() {
