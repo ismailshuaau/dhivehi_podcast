@@ -53,13 +53,10 @@
 
 		public function getSongIds() {
 			$query = "SELECT id FROM songs WHERE album='$this->id'";
-			$ids = $this->pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+			$ids = $this->pdo->prepare($query);
 			$ids->execute();
-			return $ids;
-			// $rows = $ids->rowCount();
+			$results = $ids->fetchAll(PDO::FETCH_ASSOC);
 			
-			// foreach ($ids as $id) {
-			// 	echo $id['id'] . '</br>';
-			// }
+			return $results;
 		}
 	} 

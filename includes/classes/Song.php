@@ -16,19 +16,26 @@
 			$this->id = $id;
 
 			$query = "SELECT * FROM songs WHERE id='$this->id'";
-			$this->pdoDatas = $this->pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-			$this->pdoDatas->execute();
+			$pdoData = $this->pdo->prepare($query);
+			$pdoData->execute();
 
-			foreach ( $this->pdoDatas as $this->pdoData ) {
-				$this->title = $this->pdoData['title'];
-				$this->artistId = $this->pdoData['artist'];
-				$this->albumId = $this->pdoData['album'];
-				$this->genre = $this->pdoData['genre'];
-				$this->duration = $this->pdoData['duration'];
-				$this->path = $this->pdoData['path']; 
+			$results = $pdoData->fetchAll(PDO::FETCH_ASSOC);
+
+			foreach ( $results as $result ) {
+				$this->ids = $result['id'];
+				$this->title = $result['title'];
+				$this->artistId = $result['artist'];
+				$this->albumId = $result['album'];
+				$this->genre = $result['genre'];
+				$this->duration = $result['duration'];
+				$this->path = $result['path']; 
 			}
 
 			
+		}
+
+		public function getId() {
+			return $this->ids;
 		}
 
 		public function getTitle() {

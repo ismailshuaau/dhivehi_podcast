@@ -62,8 +62,9 @@ $jsonArray = json_encode($results);
 			}
 		});
 
+	
 
-	});
+	}); //end ready
 
 	// drag progress bar with mouse click
 	function timefromOffset(mouse, progressbarcontrol) {
@@ -217,6 +218,7 @@ $jsonArray = json_encode($results);
 		$("#pause").hide();
 		audioElement.pause();
 	}
+
 
 </script>
 

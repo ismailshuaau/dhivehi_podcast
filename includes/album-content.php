@@ -30,15 +30,19 @@
 	 	<ul class="track-list">
 	 		<?php 
 
-	 			$songIds = $album->getSongIds();
+	 			$songArray = $album->getSongIds();
+	 			$array = [];
+
 	 			$i = 1; // To count track
-	 			foreach ($songIds as $songId) {
-	 				$albumSong = new Song($pdo, $songId['id']);
+	 			foreach ($songArray as $songId) {
+	 				$albumSong = new Song($pdo, $songId["id"]);
 	 				$albumList = $albumSong->getArtist();
+
+	 				array_push($array, $songId['id']);
 
 	 				echo "<li class='track-item'>
 							<div class='track-count'>
-								<i class='fa fa-play-circle-o' aria-hidden='true'></i>
+								<i class='fa fa-play-circle-o' aria-hidden='true' onclick='setTrack( {id: " . $albumSong->getId() ."}, tempPlayList, true)'></i>
 								<span class='track-number'>$i</span>
 							</div>
 							<div class='track-info'>
@@ -57,7 +61,12 @@
 	 			}
 
 	 		 ?>
+
+	 		 <script>
+			var tempSongsIds = '<?php echo json_encode($songArray); ?>';
+			tempPlayList = JSON.parse(tempSongsIds);
+	 		</script>
 	 	</ul>
 	 </div>
-
 </div>
+
