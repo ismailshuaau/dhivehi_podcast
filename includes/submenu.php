@@ -1,9 +1,9 @@
 <div class="sub-menu">
 	<nav>
-		<a class="navbar-brand" href="#">
+		<span class="navbar-brand" onclick="openPage('index.php')">
 			<img src="https://image.freepik.com/free-vector/red-logo-play_1034-412.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
 					    Player
-		</a>
+		</span>
 		<ul class="nav flex-column">
 			<li class="nav-item">
 				<label for="" class="fa fa-search" aria-hidden="true"></label>

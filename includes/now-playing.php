@@ -61,9 +61,7 @@ $jsonArray = json_encode($results);
 				audioElement.audio.volume = percentage;
 			}
 		});
-
-	
-
+		
 	}); //end ready
 
 	// drag progress bar with mouse click
@@ -89,7 +87,7 @@ $jsonArray = json_encode($results);
 			playSong();
 			return;
 		}
-		// Next Song
+		// Next Son
 		if(currentIndex == currentPlayList.length - 1) {
 			currentIndex = 0;
 		} else {
@@ -154,7 +152,6 @@ $jsonArray = json_encode($results);
 	}
 	
 	function setTrack(trackId, newPlayList, play) {
-
 		if(newPlayList != currentPlayList) {
 			currentPlayList = newPlayList;
 			shufflePlayList = currentPlayList.slice();
@@ -193,7 +190,6 @@ $jsonArray = json_encode($results);
 			});
 			
 			audioElement.setTrack(track);
-			playMusic();
 		});
 
 		if (play) {
@@ -202,7 +198,6 @@ $jsonArray = json_encode($results);
 	}
 
 	function playMusic() {
-
 		// update the number of plays in the database
 		if(audioElement.audio.currentTime == 0) {
 			$.post("includes/Handlers/ajax/updatePlaysJson.php", { songId: audioElement.currentlyPlaying[0].id });
@@ -218,8 +213,6 @@ $jsonArray = json_encode($results);
 		$("#pause").hide();
 		audioElement.pause();
 	}
-
-
 </script>
 
 <div class="now-playingbar-container">

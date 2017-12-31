@@ -196,7 +196,7 @@ body {
     width: calc(100% - 220px);;
 }
 
-.main-content {
+#main-content {
     padding: 0 20px;
 }
 
