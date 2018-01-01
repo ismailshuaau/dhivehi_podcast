@@ -17,12 +17,13 @@ $artist = new Artist($pdo, $artistId);
 			<div class="artist-info">
 				<h1 class="artist-name"><?php echo $artist->getName(); ?></h1>
 				<div class="header-buttons">
-					<button class="btn primary">PLAY</button>
+					<button class="btn primary" onclick="playFirstSong()">PLAY</button>
 				</div>
 			</div>
 		</div>
 	</div> <!-- entity-info -->
 	<div class="track-section border-bottom">
+		<h2>Songs</h2>
 		<ul class="track-list">
 			<?php 
 
@@ -59,8 +60,32 @@ $artist = new Artist($pdo, $artistId);
 				var tempSongsIds = '<?php echo json_encode($songArray); ?>';
 				tempPlayList = JSON.parse(tempSongsIds);
 			</script>
+
 		</ul> <!-- track-list"-->
 	</div> <!-- track-section -->
+	<div class="album-container container">
+		<h2>Albums</h2>
+		<div class="row">
+			<?php
+				$albumQuery = "SELECT * FROM albums WHERE artist='$artistId'";
+				$albumQueries = $pdo->prepare($albumQuery, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+				$albumQueries->execute();
+				$rowCount = $albumQueries->rowCount();
+
+				foreach ($albumQueries as $album) {
+					echo "<div class='card-view'>
+							<span onclick='openPage(\"album.php?id=" . $album['id'] . "\")' tabindex='0'>
+								<img src='". $album['artworkPath'] . "'>
+								<div class='album-caption'>"
+									. $album['title'] .
+								"</div>
+							</span>
+						</div>";
+				}
+
+			?>
+		</div>
+	</div>
 </div>
 
 

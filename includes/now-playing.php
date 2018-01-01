@@ -171,14 +171,15 @@ $jsonArray = json_encode($results);
 
 			var track = JSON.parse(data);
 			//  Title of the song
-			$(".track-name").text(track[0].title);
+			$(".track-name span").text(track[0].title);
 			
 			// get artist Id
 			var trackArtist = track[0].artist;
 			// Find the artist name using artist id retrived from track
 			$.post("includes/Handlers/ajax/getArtistJson.php", { artistId: trackArtist }, function(data) {
 				var artist = JSON.parse(data);
-				$(".artist-name").text(artist[0].name);
+				$(".artist-name span").text(artist[0].name);
+				$(".artist-name span").attr("onclick", "openPage('artist.php?id=" + artist[0].id + "')");
 			});
 
 			//  Get the album Id
@@ -187,6 +188,8 @@ $jsonArray = json_encode($results);
 			$.post("includes/Handlers/ajax/getAlbumJson.php", { albumId: trackAlbum }, function(data) {
 				var album = JSON.parse(data);
 				$(".album-link img").attr("src", album[0].artworkPath);
+				$(".album-link img").attr("onclick", "openPage('album.php?id=" + album[0].id + "')");
+				$(".track-name span").attr("onclick", "openPage('album.php?id=" + album[0].id + "')")
 			});
 			
 			audioElement.setTrack(track);
@@ -223,13 +226,17 @@ $jsonArray = json_encode($results);
 		<div class="now-playing-left">
 			<div class="content">
 				<span class="album-link">
-					<img src="" alt="" class="album-art">
+					<img tabindex="0" role="link" src="" alt="" class="album-art">
 				</span>
 				<div class="track-info">
-					<span class="track-name"></span>
+					<span class="track-name">
+						<span tabindex="0" role="link"></span>
+					</span>
 				</div>
 				<div class="track-info">
-					<span class="artist-name"></span>
+					<span class="artist-name">
+						<span tabindex="0" role="link"></span>
+					</span>
 				</div>
 			</div>
 		</div>

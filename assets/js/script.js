@@ -40,6 +40,10 @@ function updateTimeProgressBar(audio) {
 
 }
 
+function playFirstSong() {
+	setTrack(tempPlayList[0], tempPlayList, true);
+}
+
 function updateVolumeProgressBar(audio) {
 	var volume = audio.volume * 100;
 	$(".now-playing-right .progress-slide").css("width", volume + "%");
