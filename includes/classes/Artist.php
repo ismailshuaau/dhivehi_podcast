@@ -19,4 +19,13 @@
 				return $artist['name'];
 			}
 		}
+
+		public function getSongIds() {
+			$query = "SELECT id FROM songs WHERE artist='$this->id' ORDER BY plays ASC";
+			$ids = $this->pdo->prepare($query);
+			$ids->execute();
+			$results = $ids->fetchAll(PDO::FETCH_ASSOC);
+
+			return $results;
+		}
 	}
