@@ -222,7 +222,6 @@ $jsonArray = json_encode($results);
 
 <div class="now-playingbar-container">
 	<div class="now-playing-bar">
-		<p></p>
 		<div class="now-playing-left">
 			<div class="content">
 				<span class="album-link">

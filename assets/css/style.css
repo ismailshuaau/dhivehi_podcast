@@ -169,14 +169,6 @@ body {
     padding: 20px 25px;
 }
 
-.sub-menu .search {
-    width: 130px;
-    color: #464a4c;
-    background-color: #6363634f;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
-}
-
 .nav-link,
 .navbar-brand {
     color: #199cad;
@@ -369,4 +361,30 @@ body {
 
 [role="link"] {
     cursor: pointer;
+}
+
+.search-container {
+    background-color: #1a1b1b;
+    padding: 30px 30px;
+    text-align: center;
+}
+
+.search-container h4 {
+    margin: 0;
+    font-weight: 300;
+}
+
+.search {
+    width: 80%;
+    /*color: white;*/
+    font-weight: 700;
+    background-color: transparent;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    font-size: xx-large;
+    letter-spacing: 1px;
+}
+
+input:focus {
+    outline: none;
 }
