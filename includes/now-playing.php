@@ -190,11 +190,13 @@ $jsonArray = json_encode($results);
 			});
 			
 			audioElement.setTrack(track);
+
+			if (play) {
+				playMusic();
+			}
 		});
 
-		if (play) {
-			audioElement.play();
-		}
+		
 	}
 
 	function playMusic() {

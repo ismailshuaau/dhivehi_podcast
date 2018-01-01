@@ -11,12 +11,12 @@
 
 			foreach ($albumQueries as $album) {
 				echo "<div class='card-view'>
-						<a href='album.php?id=" . $album['id'] . "'>
+						<span onclick='openPage(\"album.php?id=" . $album['id'] . "\")' tabindex='0'>
 							<img src='". $album['artworkPath'] . "'>
 							<div class='album-caption'>"
 								. $album['title'] .
 							"</div>
-						</a>
+						</span>
 					</div>";
 			}
 
