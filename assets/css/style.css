@@ -333,3 +333,26 @@ body {
     color: #93f3ff;
     margin-bottom: 4px;
 }
+
+.artist-info {
+    text-align: center;
+}
+
+.btn {
+    padding: 15px;
+    min-width: 200px;
+    background-color: transparent;
+    border: 2px solid #188993;
+    border-radius: 250px;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #0e5359;
+    border: 2px solid #188993;
+}
+
+.primary {
+    background-color: #02a099;
+    border: 2px solid #188993;
+}
