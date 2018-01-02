@@ -178,8 +178,8 @@ $jsonArray = json_encode($results);
 			// Find the artist name using artist id retrived from track
 			$.post("includes/Handlers/ajax/getArtistJson.php", { artistId: trackArtist }, function(data) {
 				var artist = JSON.parse(data);
-				$(".artist-name span").text(artist[0].name);
-				$(".artist-name span").attr("onclick", "openPage('artist.php?id=" + artist[0].id + "')");
+				$(".track-info .artist-name span").text(artist[0].name);
+				$(".track-info .artist-name span").attr("onclick", "openPage('artist.php?id=" + artist[0].id + "')");
 			});
 
 			//  Get the album Id
@@ -187,9 +187,9 @@ $jsonArray = json_encode($results);
 			// Find the artist name using id retrive from track
 			$.post("includes/Handlers/ajax/getAlbumJson.php", { albumId: trackAlbum }, function(data) {
 				var album = JSON.parse(data);
-				$(".album-link img").attr("src", album[0].artworkPath);
-				$(".album-link img").attr("onclick", "openPage('album.php?id=" + album[0].id + "')");
-				$(".track-name span").attr("onclick", "openPage('album.php?id=" + album[0].id + "')")
+				$(".content .album-link img").attr("src", album[0].artworkPath);
+				$(".content .album-link img").attr("onclick", "openPage('album.php?id=" + album[0].id + "')");
+				$(".track-info .track-name span").attr("onclick", "openPage('album.php?id=" + album[0].id + "')")
 			});
 			
 			audioElement.setTrack(track);

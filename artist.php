@@ -84,8 +84,8 @@ $artist = new Artist($pdo, $artistId);
 				}
 
 			?>
-		</div>
-	</div>
+		</div> 
+	</div> <!-- album-container -->
 </div>
 
 

@@ -14,7 +14,6 @@
 </div>
 
 <script>
-
 	$(".search").focus();
 
 	$(function() {
@@ -29,9 +28,14 @@
 			}, 2000);
 		})
 	})
-
 </script>
 
+<?php if ($term == "") exit(); ?>
+
+
+<!-- 
+	Song List 
+-->
 <div class="track-section border-bottom">
 	<h2> Songs </h2>
 	<ul class="track-list">
@@ -89,6 +93,11 @@
 
 	</ul> <!-- track-list"-->
 </div> <!-- track-section -->
+
+
+<!--
+	Artist List
+-->
 <div class="artist-section border-bottom">
 	<h2> Artists </h2>
 
@@ -107,10 +116,10 @@
 			$artistFound = new Artist($pdo, $artistId['id']);
 
 			echo "<div class='search-result-row'>	
-					<div class='artist-name'>
-						<span role='link' tabindex='0' onclick='openPage(\"artist.php?id=" . $artistFound->getId() . "\")'>
+					<div id='artist-name'>
+						<span role='link' tabindex='0' onclick='openPage(\"artist.php?id=" . $artistFound->getId() ."\")'>
 						"
-						. $artistFound->getName();
+						. $artistFound->getName() .
 						"
 						</span>
 					</div>
@@ -118,3 +127,35 @@
 		}
 	 ?>
 </div>
+
+
+<!-- 
+	Album List
+-->
+<div class="album-container container">
+	<h2>Albums</h2>
+	<div class="row">
+		<?php
+			$albumQuery = ("SELECT * FROM albums WHERE title LIKE '$term%' LIMIT 10");
+			$albumQueries = $pdo->prepare($albumQuery, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+			$albumQueries->execute();
+			$rowCount = $albumQueries->rowCount();
+
+			if($rowCount == 0) {
+				echo " <span class='no-results'> No matching albums results for " . $term . "</span>";
+			}
+
+			foreach ($albumQueries as $album) {
+				echo "<div class='card-view'>
+						<span onclick='openPage(\"album.php?id=" . $album['id'] . "\")' tabindex='0'>
+							<img src='". $album['artworkPath'] . "'>
+							<div class='album-caption'>"
+								. $album['title'] .
+							"</div>
+						</span>
+					</div>";
+			}
+
+		?>
+	</div> 
+</div> <!-- album-container -->

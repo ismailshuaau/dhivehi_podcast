@@ -355,7 +355,8 @@ body {
 }
 
 .track-section h2,
-.album-container h2 {
+.album-container h2,
+.artist-section h2 {
     text-align: center;
 }
 
@@ -387,4 +388,17 @@ body {
 
 input:focus {
     outline: none;
+}
+
+/*.search-result-row {
+    padding: 15px 10px;
+}*/
+
+.search-result-row:hover {
+    background-color: #282828;
+}
+
+.no-results {
+    margin: 10px;
+    display: block;
 }
