@@ -17,14 +17,13 @@
 	$(".search").focus();
 
 	$(function() {
-		var timer;
 
 		$(".search").keyup(function() {
 			clearTimeout(timer);
 
 			timer = setTimeout(function() {
-				var val = $(".search").val();
-				openPage("search.php?term=" + val);
+				var val = $(".search").val()
+				openPage("search.php?term=" + val)
 			}, 2000);
 		})
 	})
