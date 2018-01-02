@@ -10,6 +10,10 @@
 			$this->id = $id;
 		}
 
+		public function getId() {
+			return $this->id;
+		}
+
 		public function getName() {
 			$artistQuery = "SELECT name FROM artists WHERE id='$this->id'";
 			$artists = $this->pdo->prepare($artistQuery, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));

@@ -33,7 +33,7 @@
 </script>
 
 <div class="track-section border-bottom">
-	<h2>Songs</h2>
+	<h2> Songs </h2>
 	<ul class="track-list">
 		<?php 
 
@@ -89,3 +89,32 @@
 
 	</ul> <!-- track-list"-->
 </div> <!-- track-section -->
+<div class="artist-section border-bottom">
+	<h2> Artists </h2>
+
+	<?php 
+		$artistQuery = ("SELECT id FROM artists WHERE name LIKE '$term%' LIMIT 10");
+		$artists = $pdo->prepare($artistQuery);
+		$artists->execute();
+		$results = $artists->fetchAll(PDO::FETCH_ASSOC);
+		$rowCount = $artists->rowCount();
+
+		if ($rowCount == 0) {
+			echo "<span class='no-results'> No matching artist results for " . $term . "</span>";
+		}
+
+		foreach ($results as $artistId) {
+			$artistFound = new Artist($pdo, $artistId['id']);
+
+			echo "<div class='search-result-row'>	
+					<div class='artist-name'>
+						<span role='link' tabindex='0' onclick='openPage(\"artist.php?id=" . $artistFound->getId() . "\")'>
+						"
+						. $artistFound->getName();
+						"
+						</span>
+					</div>
+				</div>";
+		}
+	 ?>
+</div>
