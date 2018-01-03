@@ -16,7 +16,7 @@
 				<span onclick="openPage('browse.php')" tabindex="0" role="link" class="nav-link active" href="#">Browse</span>
 			</li>
 			<li class="nav-item">
-				<span onclick="openPage('yourMusic.php')" tabindex="0" role="link" class="nav-link" href="#">Your Music</span>
+				<span onclick="openPage('playlists.php')" tabindex="0" role="link" class="nav-link" href="#">My Playlists</span>
 			</li>
 			<li class="nav-item">
 				<span onclick="openPage('profile.php')" tabindex="0" role="link" class="nav-link" href="#">Your Profile</span>

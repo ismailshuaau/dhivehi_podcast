@@ -326,7 +326,8 @@ body {
     margin-bottom: 4px;
 }
 
-.artist-info {
+.artist-info,
+.playlist-container h2{
     text-align: center;
 }
 
@@ -401,4 +402,13 @@ input:focus {
 .no-results {
     margin: 10px;
     display: block;
+}
+
+.container .button-items button{
+    display: block;
+    margin: 0 auto 30px auto;
+}
+
+.playlist-container {
+    padding: 40px 0 10px 0;
 }
