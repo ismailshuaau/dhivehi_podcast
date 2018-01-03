@@ -421,3 +421,8 @@ input:focus {
 .playlist-icon {
     text-align: center;
 }
+
+.card-view {
+    border: 3px solid #242727e3;
+    padding: 15px;
+}

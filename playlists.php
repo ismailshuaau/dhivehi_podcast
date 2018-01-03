@@ -28,7 +28,8 @@
 						foreach ($playListQueries as $row) {
 
 							$playlist = new Playlist($pdo, $row);
-							echo "<div class='card-view'>
+							echo "<div class='card-view' role='link' tabindex='0' 
+							onclick='openPage(\"playlist.php?id=" . $playlist->getId() . "\")'>
 									<div class='playlist-icon'>
 										<i class='fa fa-headphones' aria-hidden='true'></i>
 									</div>
