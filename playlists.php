@@ -14,6 +14,7 @@
 	 		<div>
 	 			<div class="row">
 					<?php
+
 						$username = $userLoggedIn->getUserName();
 						$playListQuery = ("SELECT * FROM playlists WHERE owner='$username'");
 						$playListQueries = $pdo->prepare($playListQuery, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
@@ -24,13 +25,15 @@
 							echo "<span class='no-results'> No playlist created </span>";
 						}
 
-						foreach ($playListQueries as $playlist) {
+						foreach ($playListQueries as $row) {
+
+							$playlist = new Playlist($pdo, $row);
 							echo "<div class='card-view'>
 									<div class='playlist-icon'>
 										<i class='fa fa-headphones' aria-hidden='true'></i>
 									</div>
 									<div class='playlist-caption'>"
-										. $playlist['name'] .
+										. $playlist->getName() .
 									"</div>
 								 </div>";
 						}
