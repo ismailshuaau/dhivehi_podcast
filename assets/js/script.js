@@ -18,14 +18,13 @@ function openPage(url) {
 		url = url + "?";
 	}
 
-	var encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
+	var encodedUrl = encodeURI(url);
 	$("#main-content").load(encodedUrl);
 	$("body").scrollTop(0);
 	history.pushState(null, null, url);
 }
 
 function createPlayList() {
-	console.log(userLoggedIn);
 	var popup = prompt("Please enter the name of playlist");
 
 	if (popup != null) {
