@@ -9,6 +9,10 @@
 			$this->username = $username;
 			
 		}
+
+		public function getUserName(){
+			return $this->username;
+		}
 	}
 
 

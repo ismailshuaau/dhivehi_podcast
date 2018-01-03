@@ -205,7 +205,8 @@ body {
     width:100%
 }
 
-.album-caption {
+.album-caption,
+.playlist-caption {
     font-weight: 300;
     text-align: center;
     padding: 5px 0;
@@ -411,4 +412,12 @@ input:focus {
 
 .playlist-container {
     padding: 40px 0 10px 0;
+}
+
+.playlist-container .fa-headphones {
+    font-size: 70px;
+}
+
+.playlist-icon {
+    text-align: center;
 }
