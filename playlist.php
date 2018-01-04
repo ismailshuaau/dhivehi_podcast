@@ -5,7 +5,7 @@
 ?>
 
 <!-- 
-		Delete Playlist Page    				||||||||||||||||||||  PLAYLIST ||||||||||||||||||||
+		Delete Playlist Page  ||||||||||||||||||||  PLAYLIST ||||||||||||||||||||
  -->
 
 <div class="row">
@@ -22,8 +22,8 @@
 
 	 ?>
 	
-	 <div class="entity-info">
-	 	<div class="left-section">
+	 <div class="entity-info playlist-info">
+	 	<div class="left-section playlist-icon">
 	 		<i class='fa fa-headphones' aria-hidden='true'></i>
 	 	</div>
 	 	<div class="right-section">

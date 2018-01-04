@@ -426,3 +426,11 @@ input:focus {
     border: 3px solid #242727e3;
     padding: 15px;
 }
+
+.playlist-info .fa-headphones {
+    font-size: 170px;
+}
+
+.playlist-info .right-section {
+    width: 30%;
+}
