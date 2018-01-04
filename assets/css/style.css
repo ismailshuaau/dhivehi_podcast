@@ -434,3 +434,7 @@ input:focus {
 .playlist-info .right-section {
     width: 30%;
 }
+
+.playlist-info .right-section span{
+    display: block;
+}
