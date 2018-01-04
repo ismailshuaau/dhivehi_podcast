@@ -4,6 +4,10 @@
 
 ?>
 
+<!-- 
+		Delete Playlist Page    				||||||||||||||||||||  PLAYLIST ||||||||||||||||||||
+ -->
+
 <div class="row">
 	<?php 
 

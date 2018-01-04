@@ -5,7 +5,7 @@
 ?>
 
 <!-- 
-		Create Playlist Page    				||||||||||||||||||||  MY PLAYLIST ||||||||||||||||||||
+		Create Playlist Page   ||||||||||||||||||||  MY PLAYLIST ||||||||||||||||||||
  -->
 
 <div class="playlist-container">
