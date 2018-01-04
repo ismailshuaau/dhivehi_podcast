@@ -4,6 +4,10 @@
 
 ?>
 
+<!-- 
+		Create Playlist Page    				||||||||||||||||||||  MY PLAYLIST ||||||||||||||||||||
+ -->
+
 <div class="playlist-container">
 	<div class="row">
 	 	<div class="container">
@@ -27,7 +31,8 @@
 
 						foreach ($playListQueries as $row) {
 
-							$playlist = new Playlist($pdo, $row);
+							$playlist = new Playlist($pdo, $row['id']);
+
 							echo "<div class='card-view' role='link' tabindex='0' 
 							onclick='openPage(\"playlist.php?id=" . $playlist->getId() . "\")'>
 									<div class='playlist-icon'>
@@ -44,4 +49,4 @@
 	 		</div>
 	 	</div>
 	</div>
-</div>
+</div> <!-- playlist-container -->

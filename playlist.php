@@ -1,29 +1,32 @@
+<?php 
+
+	include('includes/includedFiles.php');
+
+?>
+
 <div class="row">
 	<?php 
 
 		if (isset($_GET['id'])) {
-			$albumId = $_GET['id'];
+			$playListId = $_GET['id'];
 		} else {
 			header("Location: index.php");
 		}
 
-		// Album Query
-
-		$album = new Album($pdo, $albumId);
-		
-		$artist = $album->getArtist();
-		$artistId = $artist->getId();
+		$playlist = new Playlist($pdo, $playListId);
+		$owner = new User($pdo, $playlist->getOwner());
 
 	 ?>
-
+	
 	 <div class="entity-info">
 	 	<div class="left-section">
-	 		<img src="<?php echo $album->getartworkPath() ?>" alt="">
+	 		<i class='fa fa-headphones' aria-hidden='true'></i>
 	 	</div>
 	 	<div class="right-section">
-	 		<h2><?php echo $album->getTitle(); ?></h2>
-	 		<p role="link" tabindex="0" onclick="openPage('artist.php?id=<?php echo $artistId ?>')">By <?php echo $artist->getName(); ?></p>
-	 		<span><?php $album->getNumberOfSongs(); ?> Songs </span>
+	 		<h2><?php echo $playlist->getName(); ?></h2>
+	 		<span>by <?php echo $playlist->getOwner(); ?></span>
+	 		<span><?php echo $playlist->getNumberOfSongs(); ?>Songs</span>
+	 		<button class="btn">Delete Playlist</button>
 
 	 	</div> <!-- left-section -->
 	 </div> <!-- entity-info -->
@@ -32,15 +35,12 @@
 	 	<ul class="track-list">
 	 		<?php 
 
-	 			$songArray = $album->getSongIds();
-	 			$array = [];
+	 			$songArray = array();//$album->getSongIds();
 
 	 			$i = 1; // To count track
 	 			foreach ($songArray as $songId) {
 	 				$albumSong = new Song($pdo, $songId["id"]);
 	 				$albumList = $albumSong->getArtist();
-
-	 				array_push($array, $songId['id']);
 
 	 				echo "<li class='track-item'>
 							<div class='track-count'>
