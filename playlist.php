@@ -30,11 +30,11 @@
 	 		<h2><?php echo $playlist->getName(); ?></h2>
 	 		<span>by <?php echo $playlist->getOwner(); ?></span>
 	 		<span><?php echo $playlist->getNumberOfSongs(); ?>Songs</span>
-	 		<button class="btn">Delete Playlist</button>
+	 		<button class="btn" onclick="deletePlaylist('<?php echo $playListId; ?>')">Delete Playlist</button>
 
 	 	</div> <!-- left-section -->
 	 </div> <!-- entity-info -->
-
+	<?php echo $playListId; ?>
 	 <div class="track-section">
 	 	<ul class="track-list">
 	 		<?php 

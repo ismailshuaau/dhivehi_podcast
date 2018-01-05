@@ -436,11 +436,11 @@ input:focus {
     width: 30%;
 }
 
-.playlist-info .right-section span{
+.playlist-info .right-section span {
     display: block;
 }
 
-.playlist-info .playlist-icon{
+.playlist-info .playlist-icon {
     border: solid 2px #373a3a;
 }
     

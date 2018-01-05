@@ -70,6 +70,20 @@ function updateVolumeProgressBar(audio) {
 	$(".now-playing-right .progress-slide").css("width", volume + "%");
 }
 
+function deletePlaylist(playlistId) {
+	var prompt = confirm("are you sure you want to delete this playlist");
+
+	if (prompt) {
+		$.post("includes/Handlers/ajax/deletePlaylist.php", { playlistId: playlistId}).done(function(error) {
+			if (error != "") {
+				alert(error);
+				return;
+			}
+			openPage("playlists.php");
+		});
+	}
+}
+
 
 function Audio() {
 	 // Property of the class
