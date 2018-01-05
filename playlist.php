@@ -38,34 +38,35 @@
 	 <div class="track-section">
 	 	<ul class="track-list">
 	 		<?php 
+	 			$songArray = $playlist->getSongIds();
 
-	 			$songArray = array();//$album->getSongIds();
 
 	 			$i = 1; // To count track
 	 			foreach ($songArray as $songId) {
-	 				$albumSong = new Song($pdo, $songId["id"]);
-	 				$albumList = $albumSong->getArtist();
+
+	 				$playlist = new Song($pdo, $songId["id"]);
+	 				$artistList = $playlist->getArtist();
 
 	 				echo "<li class='track-item'>
 							<div class='track-count'>
-								<i class='fa fa-play-circle-o' aria-hidden='true' onclick='setTrack( {id: " . $albumSong->getId() ."}, tempPlayList, true)'></i>
+								<i class='fa fa-play-circle-o' aria-hidden='true' onclick='setTrack( {id: " . $playlist->getId() ."}, tempPlayList, true)'></i>
 								<span class='track-number'>$i</span>
 							</div>
 							<div class='track-info'>
-								<span id='track-name'>" . $albumSong->getTitle() . "</span>
-								<span id='artist-name'>" . $albumList->getName() . "</span>
+								<span id='track-name'>" . $playlist->getTitle() . "</span>
+								<span id='artist-name'>" . $artistList->getName() . "</span>
 							</div>
 							<div class='track-options'>
 								<i class='fa fa-caret-down' aria-hidden='true'></i>
 							</div>
 							<div class='track-duration'>
-								<span class='duration'>" . $albumSong->getDuration() . "</span>
+								<span class='duration'>" . $playlist->getDuration() . "</span>
 							</div>
 						  </li>";
 
 	 				$i++;  // To count track
 	 			}
-
+	 			
 	 		 ?>
 
 	 		 <script>

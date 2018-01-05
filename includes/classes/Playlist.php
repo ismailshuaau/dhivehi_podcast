@@ -13,7 +13,7 @@
 
 
 			if (!is_array($data)) {
-					# Data is an id (string)
+					// theData is an id (string)
 					$query = ("SELECT * FROM playlists WHERE id='$data'");
 					$playlists = $pdo->prepare($query);
 					$playlists->execute();
@@ -41,11 +41,20 @@
 		}
 
 		public function getNumberOfSongs() {
-			$query = ("SELECT songId FROM playlistsongs WHERE playlistId='$this->id'");
+			$query = ("SELECT `id` FROM playlistsongs WHERE playlistId='$this->id'");
 			$songs = $this->pdo->prepare($query);
 			$songs->execute();
-			// $results = $songs->fetchAll(PDO::FETCH_ASSOC);
+
 			return $songs->rowCount();
+		}
+
+		public function getSongIds() {
+			$query = ("SELECT `id` FROM playlistsongs WHERE playlistId='$this->id' ORDER BY playlistOrder ASC");
+			$ids = $this->pdo->prepare($query);
+			$ids->execute();
+			$results = $ids->fetchAll(PDO::FETCH_ASSOC);
+
+			return $results;
 		}
 
 	} 

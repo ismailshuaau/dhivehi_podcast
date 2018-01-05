@@ -48,6 +48,7 @@
 			$query = "SELECT id FROM songs WHERE album='$this->id'";
 			$songs = $this->pdo->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 			$songs->execute();
+			
 			echo $songs->rowCount();
 		}
 
