@@ -9,6 +9,20 @@ var shuffle = false;
 var userLoggedIn;
 var timer;
 
+// hide the menubar when clicked away
+$(document).click(function(click) {
+	var target = $(click.target);
+
+	if (!target.hasClass("item") && !target.is("#options-button")) {
+		hideOptionsMenu()
+	}
+});
+
+// hide the menubar while scrolling
+$(window).scroll(function() {
+	hideOptionsMenu()
+});
+
 function openPage(url) {
 	if (timer != null) {
 		clearTimeout(timer);
@@ -51,6 +65,24 @@ function formatTime(seconds) {
 	return minutes + ":" + addZero + seconds;
 }
 
+function hideOptionsMenu() {
+	var menu = $('.options-menu');
+	if (menu.css("display") != "none") {
+		menu.css("display", "none");
+	}
+}
+function showOptionsMenu(button) {
+	var menu = $('.options-menu');
+	var menuWidth = menu.width();
+
+	var scrollTop = $(window).scrollTop();
+	var elementOffset = $(button).offset().top;
+
+	var top = elementOffset - scrollTop;
+	var left = $(button).position().left;
+
+	menu.css({"top": top + "px", "left": left - menuWidth + "px", "display": "inline"});
+}
 
 function updateTimeProgressBar(audio) {
 	$(".progress-time.current").text(formatTime(audio.currentTime));

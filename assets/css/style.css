@@ -244,7 +244,7 @@ body {
 }
 
 .entity-info .right-section span {
-    color: #33a2e4;
+    color: #199cad;
     font-weight: 200px;
 }
 
@@ -262,7 +262,7 @@ body {
 }
 
 .track-item span {
-    color: #33a2e4;
+    color: #199cad;
     font-weight: 200;
 }
 
@@ -443,4 +443,28 @@ input:focus {
 .playlist-info .playlist-icon {
     border: solid 2px #373a3a;
 }
-    
+
+.options-menu {
+    position: fixed;
+    background-color: #000000f5;
+    width: 200px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+}   
+
+.options-menu .item {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    font-weight: 400;
+    color: #199cad;
+    cursor: pointer;
+    height: 40px;
+}
+
+.options-menu .item:hover {
+    color: #19c0da;
+    background-color: #000000f5;
+    border-color: #000000f5;
+}
