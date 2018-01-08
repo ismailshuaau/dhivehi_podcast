@@ -473,6 +473,6 @@ input:focus {
 
 .options-menu select {
     border: none;
-    --webkit-appearance: none;
-    -moz-appearance:
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }

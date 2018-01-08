@@ -57,12 +57,23 @@
 			return $results;
 		}
 
-		public static function getPlaylistsDropdown($con, $username) {
+		public static function getPlaylistsDropdown($pdo, $username) {
 			$dropdown = '<select class="item playlist">
-							<option value="">Add to playlist</option>
-						</select>';
+							<option value="">Add to playlist</option>';
 
-			return $dropdown;
+			$query = ("SELECT id, name FROM playlists WHERE owner='$username'");
+			$ids = $pdo->prepare($query);
+			$ids->execute();
+			$results = $ids->fetchAll(PDO::FETCH_ASSOC);
+
+			foreach ($results as $result) {
+				$id = $result['id'];
+				$name = $result['name'];
+
+				$dropdown = $dropdown . "<option value='$id'>$name</option>";
+			}
+
+			return $dropdown . "</select>";
 		}
 
 	} 
