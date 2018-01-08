@@ -456,7 +456,9 @@ input:focus {
 .options-menu .item {
     width: 100%;
     padding: 12px 20px;
+    background-color: #000000f5;
     box-sizing: border-box;
+    font-size: 14px;
     font-weight: 400;
     color: #199cad;
     cursor: pointer;
@@ -467,4 +469,10 @@ input:focus {
     color: #19c0da;
     background-color: #000000f5;
     border-color: #000000f5;
+}
+
+.options-menu select {
+    border: none;
+    --webkit-appearance: none;
+    -moz-appearance:
 }
