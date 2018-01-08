@@ -52,6 +52,7 @@
 								<span id='artist-name'>" . $albumList->getName() . "</span>
 							</div>
 							<div class='track-options'>
+								<input type='hidden' class='song-id' value='" . $albumSong->getId() . "'>
 								<i id='options-button' class='fa fa-caret-down' aria-hidden='true' onclick='showOptionsMenu(this)'></i>
 							</div>
 							<div class='track-duration'>
