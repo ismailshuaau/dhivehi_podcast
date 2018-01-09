@@ -73,7 +73,8 @@
 						<span id='artist-name'>" . $albumList->getName() . "</span>
 					</div>
 					<div class='track-options'>
-						<i class='fa fa-caret-down' aria-hidden='true'></i>
+						<input type='hidden' class='song-id' value='" . $albumSong->getId() . "'>
+						<i id='options-button' class='fa fa-caret-down' aria-hidden='true' onclick='showOptionsMenu(this)'></i>
 					</div>
 					<div class='track-duration'>
 						<span class='duration'>" . $albumSong->getDuration() . "</span>
@@ -158,3 +159,9 @@
 		?>
 	</div> 
 </div> <!-- album-container -->
+
+<nav class="options-menu">
+	<input type="hidden" class="song-id">
+	<?php echo Playlist::getPlaylistsDropdown($pdo, $userLoggedIn->getUserName()); ?>
+</nav>
+
