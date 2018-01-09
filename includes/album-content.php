@@ -8,9 +8,7 @@
 		}
 
 		// Album Query
-
 		$album = new Album($pdo, $albumId);
-		
 		$artist = $album->getArtist();
 		$artistId = $artist->getId();
 
@@ -24,7 +22,6 @@
 	 		<h2><?php echo $album->getTitle(); ?></h2>
 	 		<p role="link" tabindex="0" onclick="openPage('artist.php?id=<?php echo $artistId ?>')">By <?php echo $artist->getName(); ?></p>
 	 		<span><?php $album->getNumberOfSongs(); ?> Songs </span>
-
 	 	</div> <!-- left-section -->
 	 </div> <!-- entity-info -->
 
@@ -64,7 +61,6 @@
 	 			}
 
 	 		 ?>
-
 	 		 <script>
 				var tempSongsIds = '<?php echo json_encode($songArray); ?>';
 				tempPlayList = JSON.parse(tempSongsIds);
