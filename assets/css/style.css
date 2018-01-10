@@ -476,3 +476,7 @@ input:focus {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
+
+.user-info {
+    text-align: center;
+}
