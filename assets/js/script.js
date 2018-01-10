@@ -194,3 +194,9 @@ function Audio() {
 	}
 
 }
+
+ function logout() {
+	 $.post("includes/Handlers/ajax/logout.php", function() {
+		 location.reload();
+	 });
+ }

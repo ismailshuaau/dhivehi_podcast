@@ -12,8 +12,8 @@
  	</div>
 
  	<div class="button-items">
- 		<button class="btn">User Details</button>
- 		<button class="btn">Log Out</button>
+ 		<button class="btn" onclick="openPage('updateDetails.php')">User Details</button>
+ 		<button class="btn" onclick="logout()">Log Out</button>
  	</div>
 
  </div>
