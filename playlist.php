@@ -34,7 +34,7 @@
 
 	 	</div> <!-- left-section -->
 	 </div> <!-- entity-info -->
-	<?php echo $playListId; ?>
+	 
 	 <div class="track-section">
 	 	<ul class="track-list">
 	 		<?php 
@@ -79,6 +79,7 @@
 	 <nav class="options-menu">
 		<input type="hidden" class="song-id">
 		<?php echo Playlist::getPlaylistsDropdown($pdo, $userLoggedIn->getUserName()); ?>
+		<div class="item" onclick="removeFromPlaylist(this, '<?php echo $playListId; ?>')">Remove from Playlist</div>
 	</nav>
 </div>
 
