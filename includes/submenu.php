@@ -19,7 +19,7 @@
 				<span onclick="openPage('playlists.php')" tabindex="0" role="link" class="nav-link" href="#">My Playlists</span>
 			</li>
 			<li class="nav-item">
-				<span onclick="openPage('profile.php')" tabindex="0" role="link" class="nav-link" href="#">Your Profile</span>
+				<span onclick="openPage('settings.php')" tabindex="0" role="link" class="nav-link" href="#"><?php echo $userLoggedIn->getFirstAndLastName() ?></span>
 			</li>
 		</ul>
 	</nav>
