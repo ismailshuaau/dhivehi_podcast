@@ -9,7 +9,7 @@
  		<h2>Email</h2>
  		<input type="text" class="email" name="email" placeholder="Email address..." value=" <?php echo $userLoggedIn->getEmail();	?>">
  		<span class="message"></span>
- 		<button class="btn" onclick="">SAVE</button>
+ 		<button class="btn" onclick="updateEmail('eamil')">SAVE</button>
  	</div>
  	<div class="container">
  		<h2>Password</h2>

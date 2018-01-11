@@ -200,3 +200,12 @@ function Audio() {
 		 location.reload();
 	 });
  }
+
+ function updateEmail(emailClass) {
+ 	var emailValue = $("." + emailClass).val();
+
+ 	$.post("includes/Handlers/ajax/updateEmail.php", { email: emailValue, username: userLoggedIn } )
+ 	.done(function(response) {
+ 		$("." + emailClass).nextUntill(".message").text(response);
+ 	})
+ }
