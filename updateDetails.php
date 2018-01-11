@@ -13,10 +13,10 @@
  	</div>
  	<div class="container">
  		<h2>Password</h2>
- 		<input type="password" class="old-password" name="old-password" placeholder="Current Password">
- 		<input type="password" class="new-password-1" name="new-password-1" placeholder="New Password">
- 		<input type="password" class="new-password-2" name="new-password-2" placeholder="Confirm Password">
+ 		<input type="password" class="oldPassword" name="oldPassword" placeholder="Current Password">
+ 		<input type="password" class="newPassword1" name="newPassword1" placeholder="New Password">
+ 		<input type="password" class="newPassword2" name="newPassword2" placeholder="Confirm Password">
  		<span class="message"></span>
-		<button class="btn" onclick="">SAVE</button>
+		<button class="btn" onclick="updatePassword('oldPassword','newPassword1','newPassword2')">SAVE</button>
  	</div>
  </div>
