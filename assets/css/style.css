@@ -370,6 +370,7 @@ body {
     background-color: #1a1b1b;
     padding: 30px 30px;
     text-align: center;
+    border-radius: 80px;
 }
 
 .search-container h4 {
@@ -479,4 +480,38 @@ input:focus {
 
 .user-info {
     text-align: center;
+}
+
+.user-details {
+    padding: 20px;
+}
+
+.user-details .container h2 {
+    text-align: center;
+}
+
+.user-details .container input[type="text"],
+.user-details .container input[type="password"],
+.user-details .container .btn {
+    display: block;
+    margin: 20px auto;
+}
+
+.user-details .container input[type="text"],
+.user-details .container input[type="password"] {
+    height: 40px;
+    width: 100%;
+    background-color: 20px; 
+    border-radius: 20px;
+    background:#1a1b1b;
+    border:none;
+    text-align: center
+    font-size: 20px;
+    font-weight: 300;
+    padding: 0 20px;
+}
+
+.user-details .container .message {
+    color: green;
+    font-weight: 300;
 }

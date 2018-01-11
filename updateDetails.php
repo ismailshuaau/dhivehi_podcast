@@ -12,7 +12,7 @@
  		<button class="btn" onclick="">SAVE</button>
  	</div>
  	<div class="container">
- 		<h3>Password</h3>
+ 		<h2>Password</h2>
  		<input type="password" class="old-password" name="old-password" placeholder="Current Password">
  		<input type="password" class="new-password-1" name="new-password-1" placeholder="New Password">
  		<input type="password" class="new-password-2" name="new-password-2" placeholder="Confirm Password">
