@@ -206,6 +206,6 @@ function Audio() {
 
  	$.post("includes/Handlers/ajax/updateEmail.php", { email: emailValue, username: userLoggedIn } )
  	.done(function(response) {
- 		$("." + emailClass).nextUntill(".message").text(response);
+ 		$("." + emailClass).nextAll(".message").text(response);
  	})
  }
